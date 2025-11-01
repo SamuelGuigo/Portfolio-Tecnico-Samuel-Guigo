@@ -11,10 +11,6 @@ Aplicar os fundamentos de computação em nuvem por meio de um ambiente simulado
 
 ---
 
-🧩 Arquitetura Utilizada
-
-![Arquitetura AWS](../arquitetura_simulearn.jpg)
-
 Fluxo básico:
 1. Usuário acessa o portal da cidade.
 2. O portal faz requisição HTTP GET ao objeto hospedado no Amazon S3.

@@ -1,0 +1,29 @@
+ 🌩️ AWS SimuLearn – Fundamentos da Computação em Nuvem
+
+Autor: Samuel Guigo  
+Certificação: AWS SimuLearn: Fundamentos da computação em nuvem 
+Concluído em: 01 de Novembro de 2025  
+
+---
+
+🎯 Objetivo
+Aplicar os fundamentos de computação em nuvem por meio de um ambiente simulado AWS, criando uma solução funcional baseada em armazenamento S3, políticas de acesso e disponibilização de conteúdo web.
+
+---
+
+🧩 Arquitetura Utilizada
+
+![Arquitetura AWS](https://raw.githubusercontent.com/SamuelGuigo/Portfolio-Tecnico-Samuel-Guigo/main/arquitetura_simulearn.jpg)
+
+Fluxo básico:
+1. Usuário acessa o portal da cidade.
+2. O portal faz requisição HTTP GET ao objeto hospedado no Amazon S3.
+3. O bucket armazena o arquivo `waves.html` (dados sobre condições do mar).
+4. A política JSON do bucket permite leitura pública controlada via:
+   ```json
+   {
+     "Action": ["s3:GetObject"],a
+     "Effect": "Allow",
+     "Resource": "arn:aws:s3:::<bucketname>/*",
+     "Principal": "*"
+   }

@@ -13,7 +13,7 @@ Aplicar os fundamentos de computação em nuvem por meio de um ambiente simulado
 
 🧩 Arquitetura Utilizada
 
-![Arquitetura AWS](https://raw.githubusercontent.com/SamuelGuigo/Portfolio-Tecnico-Samuel-Guigo/main/arquitetura_simulearn.jpg)
+![Arquitetura AWS](../arquitetura_simulearn.jpg)
 
 Fluxo básico:
 1. Usuário acessa o portal da cidade.

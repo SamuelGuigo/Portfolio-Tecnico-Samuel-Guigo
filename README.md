@@ -19,6 +19,12 @@ Aqui compartilho projetos e configurações que desenvolvi na área de **Redes, 
   - Disponibilidade de links  
   - Alarmes e erros críticos  
 
+- **Case HPE ProLiant — falha de memória durante o POST**  
+  - Análise via iLO 5 e Integrated Management Log (IML)  
+  - Testes individuais e cruzados de módulos DIMM  
+  - Isolamento da falha e validação do POST com 64 GB reconhecidos  
+  - [Ver case técnico](cases/hpe-proliant-post-memory-troubleshooting/README.md)
+
 ## 📜 Certificações Relevantes
 - Mikrotik (Firewall, VPN, RouterOS)  
 - Huawei (VLAN, PPPoE, PBR, Virtual System)  

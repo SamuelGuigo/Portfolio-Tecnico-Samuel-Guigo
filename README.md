@@ -1,45 +1,53 @@
 # Technical Portfolio — Samuel Guigo
 
-Public portfolio focused on **Networks, Infrastructure, Monitoring, Virtualization, Security and Troubleshooting**.
+Public technical portfolio focused on **Networks, Infrastructure, Monitoring, Virtualization, Security and Troubleshooting**.
 
-The case studies in this repository are written from real professional work and technical labs. Customer-sensitive information is removed before publication.
+This repository mirrors the technical case studies used in my freelance portfolio. Professional projects are sanitized before publication, and labs/architecture projects are explicitly identified as such.
 
-> See [SECURITY.md](SECURITY.md) for the sanitization and publication rules used in this repository.
+> Publication and confidentiality rules: [SECURITY.md](SECURITY.md)
 
-## Public projects
+## Upwork Portfolio — 15 Technical Cases
 
-### Monitoring & Networking
-- [Zabbix 7 SNMP Monitoring Template — Dell N1124P-ON](https://github.com/SamuelGuigo/zabbix-dell-n1124p-on)
-- [Industrial Network Contingency & Monitoring](cases/industrial-network-contingency-monitoring/README.md)
-- [Industrial Ethernet Troubleshooting — CRC/FCS](cases/industrial-ethernet-crc-troubleshooting/README.md)
+| # | Portfolio Case | Area | Public Case |
+|---|---|---|---|
+| 1 | Zabbix 7 SNMP Monitoring Template — Dell N1124P-ON | Monitoring | [Open case](cases/zabbix-dell-n1124p-on/README.md) |
+| 2 | VMware ESXi & Virtual Infrastructure Deployment | Virtualization | [Open case](cases/vmware-virtual-infrastructure/README.md) |
+| 3 | Windows Server Active Directory & DNS Deployment | Windows Infrastructure | [Open case](cases/windows-server-ad-dns/README.md) |
+| 4 | MikroTik Corporate Network Lab — VLAN, VPN & Firewall | Networking / Security | [Open case](cases/mikrotik-corporate-network-lab/README.md) |
+| 5 | Infrastructure Monitoring with Zabbix & Grafana | Monitoring / Observability | [Open case](cases/zabbix-grafana-infrastructure-monitoring/README.md) |
+| 6 | Layer 2 Network Troubleshooting — MAC Flapping | Networking | [Open case](cases/layer2-mac-flapping-troubleshooting/README.md) |
+| 7 | Industrial Ethernet Troubleshooting — CRC & Connectivity | Industrial Networking | [Open case](cases/industrial-ethernet-crc-troubleshooting/README.md) |
+| 8 | Data Center Rack Reorganization & Infrastructure Planning | Physical Infrastructure | [Open case](cases/data-center-rack-infrastructure-planning/README.md) |
+| 9 | HPE Server Memory Failure Troubleshooting | Server Hardware | [Open case](cases/hpe-proliant-post-memory-troubleshooting/README.md) |
+| 10 | Backup & Storage Infrastructure Troubleshooting | Backup / Storage | [Open case](cases/backup-storage-troubleshooting/README.md) |
+| 11 | Linux Repository & Infrastructure Services with Aptly | Linux | [Open case](cases/linux-aptly-update-repository/README.md) |
+| 12 | Wazuh & Zabbix Security Monitoring Lab | Security Monitoring | [Open case](cases/wazuh-zabbix-security-monitoring-lab/README.md) |
+| 13 | SOC MVP Architecture & Security Monitoring Strategy | Security Architecture | [Open case](cases/soc-mvp-architecture/README.md) |
+| 14 | Network Contingency & Interface Monitoring Plan | Industrial Networking | [Open case](cases/industrial-network-contingency-monitoring/README.md) |
+| 15 | Fiber & Optical Link Troubleshooting | Optical Networking | [Open case](cases/fiber-optical-link-troubleshooting/README.md) |
 
-### Virtualization, Windows & Linux
-- [VMware ESXi & Virtual Infrastructure Preparation](cases/vmware-virtual-infrastructure/README.md)
-- [Windows Server — Active Directory & DNS Infrastructure](cases/windows-server-ad-dns/README.md)
-- [Linux Update Repository with Ubuntu & Aptly](cases/linux-aptly-update-repository/README.md)
+## Dedicated Project Repository
 
-### Data Center, Server & Storage
-- [Data Center Rack & Cabling Infrastructure Planning](cases/data-center-rack-infrastructure-planning/README.md)
-- [HPE ProLiant — POST Memory Troubleshooting](cases/hpe-proliant-post-memory-troubleshooting/README.md)
-- [Backup & Storage Infrastructure Troubleshooting](cases/backup-storage-troubleshooting/README.md)
+The Dell N1124P-ON Zabbix project also has its own repository with the reusable template, documentation, changelog and security notes:
 
-### Security & Observability
-- [Wazuh & Zabbix Security Monitoring Lab](cases/wazuh-zabbix-security-monitoring-lab/README.md)
-- [SOC MVP Architecture & Execution Plan](cases/soc-mvp-architecture/README.md)
+- [SamuelGuigo/zabbix-dell-n1124p-on](https://github.com/SamuelGuigo/zabbix-dell-n1124p-on)
 
-## Technical focus
+## Technical Focus
 
 - MikroTik / RouterOS
 - Cisco networking and Layer 2 troubleshooting
 - Zabbix, Grafana and SNMP
 - VMware ESXi / vCenter
 - Windows Server, Active Directory and DNS
-- Linux / Ubuntu
+- Linux / Ubuntu / Aptly
 - Wazuh and security monitoring
 - Backup and storage
+- Fiber and optical troubleshooting
 - Structured cabling and rack infrastructure
 - Technical documentation, change planning and rollback
 
-## Publication standard
+## Publication Standard
 
-I only publish technical details that are appropriate for a public portfolio. Production identifiers and sensitive environment information are intentionally anonymized.
+I only publish technical information suitable for a public portfolio.
+
+Professional cases intentionally remove customer names, internal addresses, credentials, hostnames, asset identifiers and sensitive topology information. Projects that are labs, architecture work, preparation/homologation or still in progress are labeled accordingly and are not presented as completed production deployments.

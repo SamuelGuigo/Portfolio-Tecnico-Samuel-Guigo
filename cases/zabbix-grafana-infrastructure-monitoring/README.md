@@ -1,6 +1,6 @@
 # Zabbix & Grafana — Infrastructure Monitoring and Diagnostic Visibility
 
-[← All 15 technical cases](../../README.md)
+[← All 13 technical cases](../../README.md)
 
 **Author:** Samuel Guigo  
 **Role:** Monitoring & Infrastructure Engineer  
@@ -68,7 +68,7 @@ This consolidated case does not assign a measured reduction in downtime or troub
 
 - [SNMP template adaptation and validation](../zabbix-dell-n1124p-on/README.md)
 - [Industrial interface monitoring and contingency](../industrial-network-contingency-monitoring/README.md)
-- [Wazuh and Zabbix laboratory](../wazuh-zabbix-security-monitoring-lab/README.md)
+- [Internal SOC implementation](../soc-mvp-architecture/README.md)
 
 ## Skills demonstrated
 

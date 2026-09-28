@@ -1,6 +1,6 @@
 # Ubuntu & Aptly — Internal Linux Update Repository Implementation
 
-[← All 15 technical cases](../../README.md)
+[← All 13 technical cases](../../README.md)
 
 **Author:** Samuel Guigo  
 **Role:** Linux & Infrastructure Engineer  

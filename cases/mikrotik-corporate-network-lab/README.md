@@ -1,6 +1,6 @@
 # MikroTik RouterOS — Corporate Network Demonstration Lab
 
-[← All 15 technical cases](../../README.md)
+[← All 13 technical cases](../../README.md)
 
 **Author:** Samuel Guigo  
 **Role:** Network Engineer  

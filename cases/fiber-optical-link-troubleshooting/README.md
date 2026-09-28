@@ -1,6 +1,6 @@
 # Fiber & Optical Networks — Hands-on Troubleshooting Practice
 
-[← Technical portfolio](../../README.md)
+[← All 15 technical cases](../../README.md)
 
 **Author:** Samuel Guigo  
 **Role:** Network Infrastructure Engineer  
@@ -13,7 +13,7 @@ I have performed fiber-link troubleshooting as part of my network infrastructure
 
 I connect the observations from the active equipment with the condition of the passive optical path. This is central to determining whether the next action belongs at the transceiver, patching, connector or fiber-route level.
 
-This page consolidates that professional practice. It does not present several interventions as one incident or attach a single invented measurement, repair or customer outcome to them.
+This page consolidates my professional practice across optical troubleshooting activities. The scope is experience and diagnostic reasoning rather than one incident timeline.
 
 ## My technical contribution
 
@@ -74,7 +74,7 @@ Power measurements and OTDR evidence answer different diagnostic questions. The 
 
 A restored link is the first operational checkpoint. A stronger closeout also considers whether the optical levels and interface behavior are consistent with stable operation.
 
-The corrective action and the validation must match the diagnosed fault. Cleaning a connector, correcting patching, replacing optics and repairing fiber are distinct interventions; none is presented here as the repair for an undocumented single incident.
+The corrective action and the validation must match the diagnosed fault. Connector cleaning, patching correction, optics replacement and fiber repair address different fault domains. The findings determine which intervention is appropriate.
 
 ## Engineering judgment
 
@@ -94,11 +94,9 @@ This experience demonstrates my ability to work across active network equipment 
 
 It complements my switching and infrastructure work: an unstable optical path can undermine otherwise correct network configuration, so the physical layer must be part of the investigation.
 
-## Case scope and supporting evidence
+## Scope of this experience case
 
-This is a consolidated experience case. Exact measurement values, distances, outage durations and individual repair outcomes are not assigned to it.
-
-Any future incident-specific appendix should pair the symptom, actual measurements, performed correction and post-intervention validation from the same intervention. Illustrations are not substitutes for field measurements or original diagnostic records.
+The public account focuses on my technical responsibilities and diagnostic method. Measurements and repair outcomes belong to the records of each individual intervention and are not combined into a single incident here.
 
 ## Skills demonstrated
 
@@ -106,4 +104,4 @@ Fiber optics · SFP/SFP+ · WDM · Optical power interpretation · Power meter �
 
 ## Confidentiality
 
-Provider and customer identifiers, optical routes, internal topology, serial numbers and private diagnostic records are not published.
+Customer names, internal addresses, hostnames, credentials and identifying infrastructure details are omitted. See the [publication policy](../../SECURITY.md).

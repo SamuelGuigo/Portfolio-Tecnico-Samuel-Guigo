@@ -1,6 +1,6 @@
 # Layer 2 Incident Investigation — MAC Flapping & Virtual Infrastructure Availability
 
-[← All 15 technical cases](../../README.md)
+[← All 13 technical cases](../../README.md)
 
 **Author:** Samuel Guigo  
 **Role:** Network & Infrastructure Engineer — hands-on incident investigation  

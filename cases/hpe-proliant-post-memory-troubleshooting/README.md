@@ -1,44 +1,45 @@
-# HPE ProLiant DL380 Gen10 Plus — Troubleshooting de falha de memória no POST
+# HPE ProLiant DL380 Gen10 Plus — POST Memory Failure Diagnosis & Recovery
 
-Case técnico de diagnóstico e correção de falha de hardware em servidor **HPE ProLiant DL380 Gen10 Plus**, utilizando **HPE iLO 5**, **Integrated Management Log (IML)**, testes individuais de DIMM e teste cruzado com memória conhecida como funcional.
+[← All 15 technical cases](../../README.md)
 
-> **Segurança:** este case não contém endereços IP, hostnames, credenciais, números de série, nomes de clientes ou outros identificadores do ambiente onde o troubleshooting foi executado.
+**Author:** Samuel Guigo  
+**Role:** Infrastructure Engineer — hardware diagnosis and replacement testing  
+**Delivery:** Server startup restored with 64 GB recognized
 
-## Equipamento validado
+## Incident summary
 
-| Item | Valor |
+I diagnosed a server that could not complete POST and restored startup by replacing the memory modules that reproduced the failure with validated DIMMs.
+
+I identified the symptom during an infrastructure inspection, used HPE iLO 5 and the Integrated Management Log (IML) to narrow the fault domain, tested the original DIMMs individually and performed a cross-test with known-good memory.
+
+## Equipment and evidence
+
+| Item | Recorded value |
 |---|---|
-| Fabricante | Hewlett Packard Enterprise |
-| Modelo | HPE ProLiant DL380 Gen10 Plus |
-| Gerenciamento | HPE iLO 5 |
-| Firmware observado | System ROM U46 v1.72 |
-| Memória validada ao final | 64 GB |
-| Tecnologia | ECC RDIMM |
-| Método | Troubleshooting físico + iLO/IML |
+| Platform | HPE ProLiant DL380 Gen10 Plus |
+| Remote management | HPE iLO 5 |
+| System ROM observed | U46 v1.72 |
+| Memory technology | ECC RDIMM |
+| Reference modules | Two 32 GB DIMMs |
+| Validated final memory | 64 GB installed and available |
 
-## Situação identificada
+## Initial symptoms
 
-Durante uma ronda no ambiente de infraestrutura, foi observado que o servidor permanecia com as **ventoinhas em rotação elevada por um período anormal**.
-
-Como esse comportamento é típico durante etapas de POST, foi realizada uma inspeção no equipamento. Também foi identificado o **LED de saúde piscando em vermelho**.
-
-Ao acessar a console remota via iLO 5, foi constatado que o equipamento **não concluía o POST** e interrompia a inicialização em:
+During the inspection, I observed sustained high fan speed and a flashing red health LED. I accessed the remote console and found that startup stopped at:
 
 ```text
 Memory Initialization - Start
-```
 
-O erro apresentado era:
-
-```text
 221 - Unknown Initialization Error
 The system has experienced a fatal initialization error.
 System Halted!
 ```
 
-## Evidências identificadas
+The console established that the failure occurred during memory initialization, before normal startup could complete.
 
-No **Integrated Management Log (IML)** foram registrados eventos diretamente relacionados ao subsistema de memória:
+## Log analysis
+
+I inspected the IML and found memory-related events:
 
 ```text
 462 - Uncorrectable Memory Error Threshold Exceeded
@@ -48,123 +49,75 @@ Processor 2, DIMM 14
 ```text
 223 - DIMM Initialization Error
 Processor 2 DIMMs 13, 14
-The identified memory channel could not be properly trained and has been mapped out.
+The identified memory channel could not be properly trained
+and has been mapped out.
 ```
 
-Os registros direcionaram o troubleshooting para os módulos DIMM e para o processo de treinamento da memória durante o POST.
+These events directed the investigation toward the DIMMs and the memory-initialization path. I used physical testing to distinguish a module-related problem from other possible causes.
 
-## Testes executados
+## Tests I performed
 
-### 1. Validação física e de população
+### 1. Reseat and review population
 
-Os módulos foram reencaixados e posicionados de forma controlada, evitando alterações simultâneas de múltiplas variáveis.
+I repositioned and reseated the modules in a controlled sequence. The objective was to check seating and population while avoiding unrelated changes.
 
-### 2. Inversão dos DIMMs
+### 2. Swap the original DIMMs
 
-Os módulos foram invertidos entre os processadores mantendo os slots de referência, com o objetivo de observar se a falha acompanharia o módulo ou permaneceria associada ao caminho de memória.
+I moved the modules between processors while retaining reference positions. This tested whether the behavior would follow the modules or remain tied to the original memory path.
 
-### 3. Testes individuais
+### 3. Test each original module individually
 
-Cada módulo de **32 GB** foi testado individualmente no mesmo slot de referência:
+I tested each 32 GB module separately in the same reference slot.
 
-```text
-Processor 1 - DIMM 14
-```
+**Observed result:** both original modules reproduced error `221` and prevented POST completion.
 
-Os dois módulos reproduziram o erro `221` e impediram a conclusão do POST.
+Using the same reference position made the comparison more meaningful than changing the module and the test location simultaneously.
 
-### 4. Teste cruzado
+### 4. Cross-test with known-good memory
 
-Foram utilizados **2 módulos de 32 GB comprovadamente funcionais** provenientes de outro servidor HPE operacional.
+I installed two known-good 32 GB modules from an operational HPE server.
 
-Com esses módulos instalados, o servidor apresentou:
+**Observed result:**
 
 ```text
 Installed System Memory: 64 GB
 Available System Memory: 64 GB
-```
 
-Também foi exibido:
-
-```text
 HPE Memory authenticated in all populated DIMM slots.
 Starting all devices. Please wait...
 ```
 
-O equipamento passou normalmente pela etapa de inicialização de memória e prosseguiu com o POST.
+The server passed memory initialization and continued through POST.
 
-## Resultado
+## Diagnostic conclusion
 
-Após a substituição dos módulos que reproduziam a falha pelos DIMMs validados durante o teste cruzado:
+| Test | Observation | Interpretation |
+|---|---|---|
+| Original modules tested individually | Both reproduced the startup failure | The failure remained reproducible with the original DIMMs |
+| Known-good modules installed | Memory initialization succeeded | The replacement configuration restored startup |
+| Final memory check | 64 GB installed and available | The expected replacement capacity was recognized |
 
-- [x] POST concluído normalmente
-- [x] 64 GB de memória reconhecidos
-- [x] 64 GB de memória disponíveis
-- [x] `Memory Initialization` normalizada
-- [x] servidor novamente operacional
+The controlled substitution supported replacing the original modules. The outcome is specific to the tested configuration; it does not require claiming that every other memory slot was exhaustively tested.
 
-## Fluxo de troubleshooting
+## Verified result
 
-```text
-Ventoinhas em rotação elevada
-        ↓
-Inspeção física / LED de saúde em vermelho
-        ↓
-Console remota via iLO 5
-        ↓
-POST interrompido em Memory Initialization
-        ↓
-221 - Unknown Initialization Error
-        ↓
-Análise do IML
-        ↓
-462 / 223 relacionados à memória
-        ↓
-Testes individuais e inversão dos DIMMs
-        ↓
-Falha reproduzida
-        ↓
-Teste cruzado com DIMMs conhecidos como funcionais
-        ↓
-64 GB reconhecidos / POST concluído
-        ↓
-Servidor normalizado
-```
+- POST completed normally.
+- Memory initialization was restored.
+- 64 GB was recognized and available.
+- The server returned to an operational startup state.
 
-## Tecnologias utilizadas
+## Supporting documentation
 
-- HPE ProLiant DL380 Gen10 Plus
-- HPE iLO 5
-- Integrated Management Log (IML)
-- UEFI / POST
-- ECC RDIMM
-- Troubleshooting de hardware
-- Isolamento de variáveis
+- [Detailed technical report — Portuguese](docs/RELATORIO_TECNICO.md)
+- [Case changelog](CHANGELOG.md)
+- [Evidence publication guidance](SECURITY.md)
 
-## Documentação
+The technical report preserves the original diagnostic sequence and log excerpts. A sanitized evidence gallery remains a separate documentation task.
 
-- [Relatório técnico](docs/RELATORIO_TECNICO.md)
-- [Changelog](CHANGELOG.md)
-- [Security](SECURITY.md)
+## Skills demonstrated
 
-## Estrutura do projeto
+HPE ProLiant · iLO 5 · IML · POST diagnostics · ECC RDIMM · Hardware fault isolation · Controlled substitution · Server recovery
 
-```text
-.
-├── README.md
-├── CHANGELOG.md
-├── SECURITY.md
-└── docs/
-    └── RELATORIO_TECNICO.md
-```
+## Confidentiality
 
-## Status
-
-- [x] Sintoma identificado em campo
-- [x] POST analisado via console remota
-- [x] Eventos de memória confirmados no IML
-- [x] DIMMs testados individualmente
-- [x] Teste cruzado realizado
-- [x] POST normalizado
-- [x] Documentação sanitizada para portfólio
-- [ ] Adicionar galeria de evidências sanitizadas
+Customer names, internal addresses, hostnames, credentials and identifying infrastructure details are omitted. See the [publication policy](../../SECURITY.md).

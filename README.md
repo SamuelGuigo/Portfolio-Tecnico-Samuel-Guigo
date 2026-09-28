@@ -6,6 +6,8 @@ This portfolio documents my technical responsibilities, the problems I investiga
 
 ## Selected technical work
 
+- **[Greenfield data center implementation](cases/vmware-virtual-infrastructure/README.md):** implementing a two-server HPE environment with ESXi, dedicated storage, seven infrastructure VMs, VLAN/vSwitch networking, QNAP backup storage and RASA-based monitoring.
+
 - **[Server recovery](cases/hpe-proliant-post-memory-troubleshooting/README.md):** isolated a POST memory failure through individual DIMM tests and known-good substitution; restored startup with 64 GB recognized.
 - **[Monitoring engineering](cases/zabbix-dell-n1124p-on/README.md):** adapted a Dell N-Series SNMP template for Zabbix 7, corrected discovery issues and retained device-supported telemetry.
 - **[Linux implementation](cases/linux-aptly-update-repository/README.md):** deployed an Aptly repository and validated initial package-index consumption from a Linux client.
@@ -19,7 +21,7 @@ The delivery stage describes the work documented in each case. Professional prac
 | # | Case | Delivery stage | Technical contribution |
 |---|---|---|---|
 | 1 | [Zabbix 7 template engineering — Dell N1124P-ON](cases/zabbix-dell-n1124p-on/README.md) | Template adaptation and validation | Compatibility fixes, LLD corrections and counter fallback |
-| 2 | [VMware ESXi & vCenter infrastructure build](cases/vmware-virtual-infrastructure/README.md) | Preparation / homologation | Windows/Linux guests, resource planning and service handoff |
+| 2 | [Greenfield data center implementation](cases/vmware-virtual-infrastructure/README.md) | Implementation in progress | HPE compute/storage, seven VMs, IP/VLAN/vSwitch configuration, core network, QNAP and monitoring |
 | 3 | [Windows Server 2022 — AD & DNS](cases/windows-server-ad-dns/README.md) | Preparation / homologation | Guest deployment, directory-service preparation and validation plan |
 | 4 | [MikroTik corporate network demonstration](cases/mikrotik-corporate-network-lab/README.md) | Hands-on lab | VLANs, routing, firewall, VPN and failover scenarios |
 | 5 | [Zabbix & Grafana infrastructure monitoring](cases/zabbix-grafana-infrastructure-monitoring/README.md) | Professional practice | Collection troubleshooting, dashboards and resource analysis |
@@ -38,7 +40,7 @@ The delivery stage describes the work documented in each case. Professional prac
 
 | Service area | Relevant cases |
 |---|---|
-| Windows and virtual infrastructure | [VMware build](cases/vmware-virtual-infrastructure/README.md) · [AD/DNS](cases/windows-server-ad-dns/README.md) |
+| Data center, Windows and virtual infrastructure | [Data center implementation](cases/vmware-virtual-infrastructure/README.md) · [AD/DNS](cases/windows-server-ad-dns/README.md) |
 | Monitoring and observability | [Dell SNMP template](cases/zabbix-dell-n1124p-on/README.md) · [Zabbix/Grafana](cases/zabbix-grafana-infrastructure-monitoring/README.md) |
 | Network configuration and diagnosis | [MikroTik lab](cases/mikrotik-corporate-network-lab/README.md) · [MAC flapping](cases/layer2-mac-flapping-troubleshooting/README.md) · [Industrial CRC](cases/industrial-ethernet-crc-troubleshooting/README.md) |
 | Linux services | [Ubuntu/Aptly repository](cases/linux-aptly-update-repository/README.md) |

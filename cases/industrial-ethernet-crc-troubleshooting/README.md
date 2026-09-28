@@ -1,6 +1,6 @@
 # Industrial Ethernet Incident — CRC Errors, Link Isolation & Service Recovery
 
-[← All 15 technical cases](../../README.md)
+[← All 13 technical cases](../../README.md)
 
 **Author:** Samuel Guigo  
 **Role:** Infrastructure Engineer — hands-on network troubleshooting  

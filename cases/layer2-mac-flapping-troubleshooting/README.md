@@ -1,6 +1,6 @@
 # Layer 2 Incident Investigation — MAC Flapping & Virtual Infrastructure Availability
 
-[← Technical portfolio](../../README.md)
+[← All 15 technical cases](../../README.md)
 
 **Author:** Samuel Guigo  
 **Role:** Network & Infrastructure Engineer — hands-on incident investigation  
@@ -13,13 +13,13 @@ I investigated a connectivity incident that made several infrastructure resource
 
 The investigation identified unstable Layer 2 forwarding as a priority fault domain. I connected the switching evidence to the redundant network paths and developed a remediation direction around reviewing the topology and evaluating properly designed link aggregation.
 
-This case documents the investigation I performed and the engineering recommendation that followed. The recommendation is separate from a completed topology change.
+The delivered work covered incident diagnosis and a proposed redundancy correction. Implementation of the topology change was a separate milestone.
 
 ## Operational problem
 
 The initial symptom was broader than one failed VM. Several resources sharing the network path became unreachable together. Treating each unavailable resource as an independent server problem would have fragmented the investigation.
 
-My first task was to establish whether the common dependency was the network. The scope of the outage made the switching path a stronger starting point than unrelated changes inside individual guest operating systems.
+My first task was to establish whether the common dependency was the network. The scope of the outage justified checking the shared switching path alongside the affected services.
 
 ## My technical responsibilities
 
@@ -69,7 +69,7 @@ That proposal requires validating the endpoints, VLAN handling, aggregation supp
 
 | Observation | What it established | Engineering consequence |
 |---|---|---|
-| Multiple infrastructure resources became unreachable together | A shared dependency was involved | Investigate the common network path |
+| Multiple infrastructure resources became unreachable together | A shared dependency was the priority hypothesis | Investigate the common network path |
 | Switch logs showed repeated MAC movement between interfaces | Forwarding information was unstable during the investigation | Examine the paths associated with the events |
 | Redundant links were part of the affected topology | Redundancy behavior needed review | Assess STP and aggregation assumptions |
 | LACP/Port-Channel was proposed | A corrective design direction was defined | Validate feasibility before implementation |
@@ -88,4 +88,4 @@ Cisco switching · Layer 2 troubleshooting · MAC learning · STP analysis · Re
 
 ## Confidentiality
 
-This account omits customer identity, internal addresses, hostnames, MAC addresses, exact interface identifiers and sensitive topology. It preserves the diagnostic sequence and my technical contribution.
+Customer names, internal addresses, hostnames, credentials and identifying infrastructure details are omitted. See the [publication policy](../../SECURITY.md).

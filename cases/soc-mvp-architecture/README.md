@@ -1,6 +1,6 @@
 # Internal SOC Implementation — Security Monitoring & Operations
 
-[← All 15 technical cases](../../README.md)
+[← All 13 technical cases](../../README.md)
 
 **Author:** Samuel Guigo  
 **Role:** Infrastructure & Security — hands-on implementation with my team  
@@ -43,11 +43,53 @@ The table describes the implementation scope. Each component has its own configu
 
 ## Concrete implementation progress
 
-One completed technical validation is the Wazuh Windows FIM scenario. A centralized Windows-group policy produced events for test-file creation, modification and deletion.
+The Wazuh and Zabbix implementation and the SOC operating model belong to this same project. The following technical validation is one milestone of the deployment.
 
-That result establishes a working policy and telemetry path for the tested scenario. It is a deliverable within the wider SOC implementation, with additional collection, detection and operational workflows progressing separately.
+## Technical scope and maturity
 
-See [Wazuh and Zabbix implementation and telemetry validation](../wazuh-zabbix-security-monitoring-lab/README.md) for the detailed workstream.
+| Component | Work represented | Recorded stage |
+|---|---|---|
+| Wazuh Windows agent | Endpoint telemetry and agent organization | Implementation work |
+| Central Windows-group policy | Apply the monitoring policy centrally | Validated for the FIM scenario |
+| File Integrity Monitoring | Create, modify and delete a test file | Events observed |
+| Syscollector | Hardware/software inventory exploration | Implementation scope |
+| Vulnerability Detection | Vulnerability-related telemetry exploration | Implementation scope |
+| Sysmon | Integration study | Initial study |
+| Zabbix | Availability and capacity monitoring | Infrastructure-monitoring scope |
+
+## FIM test I carried out
+
+### Prepare the controlled test
+
+I used a dedicated test file and the Windows-group monitoring policy. The test was intended to produce recognizable events without involving production documents.
+
+### Generate distinct changes
+
+I exercised three file lifecycle actions:
+
+1. Create the test file.
+2. Modify the file.
+3. Delete the file.
+
+Each action had a corresponding event to look for, making it possible to validate more than agent connectivity alone.
+
+### Check the received events
+
+The recorded FIM result included **added**, **modified** and **deleted** events.
+
+This demonstrated that the centralized policy worked for the tested Windows scenario and that the monitored changes reached the event view.
+
+## What the result established
+
+| Result | Interpretation |
+|---|---|
+| File creation event received | The tested addition was detected |
+| File modification event received | The tested change was detected |
+| File deletion event received | The tested removal was detected |
+| Policy applied through the Windows group | Central configuration worked for this scope |
+
+The test validated a specific collection path. Coverage of all endpoints, retention quality and incident-response effectiveness require their own tests.
+
 
 ## Operating process being implemented
 

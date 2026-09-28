@@ -1,6 +1,6 @@
 # Industrial Network — Interface Monitoring & Prepared Contingency Ports
 
-[← All 15 technical cases](../../README.md)
+[← All 13 technical cases](../../README.md)
 
 **Author:** Samuel Guigo  
 **Role:** Network & Infrastructure Engineer  

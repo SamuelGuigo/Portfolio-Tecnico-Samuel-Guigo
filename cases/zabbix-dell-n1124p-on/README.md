@@ -1,6 +1,6 @@
 # Zabbix 7 Template Engineering — Dell N1124P-ON
 
-[← All 15 technical cases](../../README.md)
+[← All 13 technical cases](../../README.md)
 
 **Author:** Samuel Guigo  
 **Role:** Monitoring & Network Engineer  

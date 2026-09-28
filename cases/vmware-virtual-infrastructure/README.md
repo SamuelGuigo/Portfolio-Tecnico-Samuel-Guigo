@@ -9,9 +9,22 @@
 
 ## Project overview
 
-I am implementing a new data center as part of the delivery team. The scope brings together two HPE ProLiant servers, VMware virtualization, a dedicated storage platform, QNAP backup storage, core and industrial switching, and a network-management appliance with Zabbix and Grafana.
+My team and I are implementing a new data center from the ground up. We are configuring the environment at our base before transporting it to Sergipe, Brazil, for on-site installation and commissioning. The scope brings together two HPE ProLiant servers, VMware virtualization, a dedicated storage platform, QNAP backup storage, core and industrial switching, and a network-management appliance with Zabbix and Grafana.
 
-I have deployed Windows and Linux virtual machines and worked on their network configuration, including IP addresses, subnet masks, gateways, VLANs and VMware virtual switching. This work forms part of the complete data center implementation, alongside physical networking, storage integration, backup and management services.
+My team and I have deployed Windows and Linux virtual machines and configured their networking, including IP addresses, subnet masks, gateways, VLANs and VMware virtual switching. This work forms part of the complete data center implementation, alongside physical networking, storage integration, backup and management services.
+
+## Delivery model: configure at base, deploy on site
+
+We are building and configuring the complete environment at our base so it can be transported to the destination with its configuration prepared. On-site work in Sergipe will complete the physical installation, integration and commissioning.
+
+| Phase | Team scope | Current stage |
+|---|---|---|
+| Base implementation | Configure servers, VMs, storage, networking, backup and management services | In progress |
+| Pre-deployment validation | Check service communication and configuration before shipment | Part of the base implementation workstream |
+| Transport and on-site deployment | Take the configured equipment to Sergipe and install it at the destination | Upcoming |
+| Commissioning and handover | Validate the integrated environment on site and document the delivered state | Upcoming |
+
+This is one implementation project from base configuration through on-site delivery. The work at our base is the build stage of the deployment.
 
 ## Architecture and implementation scope
 
@@ -29,7 +42,7 @@ I have deployed Windows and Linux virtual machines and worked on their network c
 
 The two HPE servers have different functions: one is the compute host and the other is the storage platform. This is not a two-node ESXi high-availability cluster.
 
-## My implementation responsibilities
+## My role and team delivery
 
 My work spans the infrastructure layers required to deliver the environment:
 
@@ -43,7 +56,7 @@ My work spans the infrastructure layers required to deliver the environment:
 - Preparing and implementing infrastructure services.
 - Documenting the build, dependencies, configuration progress and remaining tasks.
 
-The implementation is shared with the project team. My responsibility is hands-on infrastructure delivery across these workstreams, with individual service tasks and handoffs tracked during the project.
+My team and I own the implementation across these workstreams. I perform hands-on infrastructure configuration and integration within that delivery, with individual tasks and progress tracked throughout the build.
 
 ## Virtual machines deployed
 
@@ -69,7 +82,7 @@ Additional application-platform work is tracked separately from this seven-VM ba
 
 ### Guest addressing
 
-I configured IP addresses, subnet masks and default gateways for the deployed workloads as part of establishing their connectivity. Addressing is tied to the assigned network segment and its gateway.
+My team and I configured IP addresses, subnet masks and default gateways for the deployed workloads as part of establishing their connectivity. Addressing is tied to the assigned network segment and its gateway.
 
 ### VLANs and virtual switching
 
@@ -132,7 +145,7 @@ The RASA appliance is part of the network-management deployment scope, with Zabb
 
 The current delivery is an active greenfield data center implementation with deployed virtual workloads and network configuration already performed. The project combines compute, storage, switching, infrastructure services, protection and observability into one environment.
 
-Final acceptance will cover end-to-end service connectivity, commissioned storage, validated backup recovery, monitoring and operational documentation.
+After base configuration and pre-deployment checks, my team and I will take the environment to Sergipe for installation and commissioning. Final acceptance will cover end-to-end service connectivity, commissioned storage, validated backup recovery, monitoring and operational documentation.
 
 ## Related implementation details
 

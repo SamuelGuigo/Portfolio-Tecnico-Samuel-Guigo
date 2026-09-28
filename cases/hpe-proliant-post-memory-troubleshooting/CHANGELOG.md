@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.2 - 2026-09-28
+
+- README reescrito em inglês e primeira pessoa, preservando os testes e resultados registrados.
+- Acrescentadas interpretação dos testes, navegação do portfólio e tabela de diagnóstico.
+- Relatório técnico preservado em português, com autoria explícita e conclusão limitada à configuração validada.
+- Fluxo textual substituído por tabela de evidências e decisões.
+
 ## v1.1 - 2026-09-02
 
 - Estrutura do case reorganizada para o mesmo padrão documental utilizado no projeto Dell N1124P-ON.

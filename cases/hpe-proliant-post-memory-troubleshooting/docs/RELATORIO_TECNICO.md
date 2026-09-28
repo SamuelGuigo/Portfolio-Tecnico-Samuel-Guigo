@@ -1,5 +1,6 @@
 # Relatório Técnico — Troubleshooting de memória em HPE ProLiant DL380 Gen10 Plus
 
+**Autor e execução técnica:** Samuel Guigo  
 **Data:** 02/09/2026  
 **Escopo:** diagnóstico de falha durante POST e estabilização do subsistema de memória.
 
@@ -80,7 +81,7 @@ Os dois módulos reproduziram o erro `221` e impediram a conclusão do POST.
 
 ### 5.4 Teste cruzado com memória conhecida como funcional
 
-Para eliminar dúvidas relacionadas a slot, processador, controlador de memória ou system board, foram utilizados dois módulos de 32 GB comprovadamente funcionais provenientes de outro servidor HPE operacional.
+Para comparar o comportamento com memória conhecida como funcional, utilizei dois módulos de 32 GB provenientes de outro servidor HPE operacional. O resultado permitiu validar a inicialização na configuração testada, sem representar um teste exaustivo de todos os slots e canais.
 
 Os módulos foram instalados de forma balanceada entre os processadores.
 
@@ -111,33 +112,15 @@ Após a substituição dos módulos que reproduziam a falha pelos módulos valid
 - a etapa de `Memory Initialization` foi normalizada;
 - o equipamento voltou a inicializar normalmente.
 
-## 8. Fluxo de troubleshooting
+## 8. Sequência e interpretação dos testes
 
-```text
-Ventoinhas em rotação elevada por período anormal
-        ↓
-Inspeção física / LED de saúde em vermelho
-        ↓
-Console remota via iLO 5
-        ↓
-POST interrompido em Memory Initialization
-        ↓
-221 - Unknown Initialization Error
-        ↓
-Análise do Integrated Management Log
-        ↓
-462 / 223 relacionados à memória
-        ↓
-Inversão e testes individuais dos DIMMs
-        ↓
-Falha reproduzida
-        ↓
-Teste cruzado com DIMMs conhecidos como funcionais
-        ↓
-64 GB reconhecidos / POST concluído
-        ↓
-Servidor normalizado
-```
+| Etapa | Evidência | Direcionamento |
+|---|---|---|
+| Inspeção | Ventoinhas elevadas e LED de saúde vermelho | Acessar console remota |
+| Console iLO | POST interrompido com erro 221 | Investigar inicialização da memória |
+| IML | Eventos 462 e 223 | Direcionar testes aos DIMMs e caminho de memória |
+| Testes individuais | Ambos os módulos originais reproduziram a falha | Comparar com módulos conhecidos como funcionais |
+| Teste cruzado | POST concluído e 64 GB disponíveis | Validar a substituição na configuração testada |
 
 ## 9. Observações de publicação
 

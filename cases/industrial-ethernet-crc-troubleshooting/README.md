@@ -1,6 +1,6 @@
 # Industrial Ethernet Incident — CRC Errors, Link Isolation & Service Recovery
 
-[← Technical portfolio](../../README.md)
+[← All 15 technical cases](../../README.md)
 
 **Author:** Samuel Guigo  
 **Role:** Infrastructure Engineer — hands-on network troubleshooting  
@@ -13,7 +13,7 @@ I investigated an industrial communication incident involving a production proce
 
 I carried out the network troubleshooting and an uplink port-isolation intervention. The errors continued after the link was moved to another port, which made a fault confined to the original port a weaker explanation. During the return to the original connection, access was interrupted and I worked to restore the link.
 
-The process returned to operation following network recovery and a panel reset. Service recovery and permanent elimination of the physical fault were tracked as separate outcomes.
+The process returned to operation following network recovery and a panel reset; my recorded responsibility was the network investigation and link recovery. Service recovery and permanent elimination of the physical fault were tracked as separate outcomes.
 
 ## Operational context
 
@@ -58,7 +58,7 @@ I moved the uplink from its original port to another port and checked the behavi
 
 **Observed result:** the errors continued.
 
-This was an important diagnostic result. Changing the local port did not eliminate the symptom, so the original port alone could not explain the observed behavior. The cable path and the remote side remained relevant candidates.
+This was an important diagnostic result. Changing the local port did not eliminate the symptom, so changing the original port did not isolate or resolve the fault. The cable path and the remote side remained relevant candidates.
 
 It did not, by itself, prove which cable segment, connector or remote component was defective.
 
@@ -104,4 +104,4 @@ Industrial Ethernet · CRC/FCS analysis · Interface diagnostics · Physical-lay
 
 ## Confidentiality
 
-Customer and plant names, internal addresses, switch identifiers, port numbers and production topology are omitted.
+Customer names, internal addresses, hostnames, credentials and identifying infrastructure details are omitted. See the [publication policy](../../SECURITY.md).

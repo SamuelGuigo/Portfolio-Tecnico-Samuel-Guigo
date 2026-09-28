@@ -1,6 +1,6 @@
 # Greenfield Data Center Implementation — HPE, VMware, Storage & Network Infrastructure
 
-[← All 15 technical cases](../../README.md)
+[← All 13 technical cases](../../README.md)
 
 **Author:** Samuel Guigo  
 **Role:** Infrastructure Engineer — hands-on data center implementation  

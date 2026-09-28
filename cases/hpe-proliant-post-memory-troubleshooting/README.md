@@ -1,6 +1,6 @@
 # HPE ProLiant DL380 Gen10 Plus — POST Memory Failure Diagnosis & Recovery
 
-[← All 15 technical cases](../../README.md)
+[← All 13 technical cases](../../README.md)
 
 **Author:** Samuel Guigo  
 **Role:** Infrastructure Engineer — hardware diagnosis and replacement testing  

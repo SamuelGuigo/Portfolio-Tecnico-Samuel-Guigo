@@ -1,6 +1,6 @@
 # Data Center Rack Reorganization — Technical Leadership, Survey & Execution Planning
 
-[← All 15 technical cases](../../README.md)
+[← All 13 technical cases](../../README.md)
 
 **Author:** Samuel Guigo  
 **Role:** Infrastructure Engineer — technical project lead  

@@ -1,48 +1,87 @@
-# Industrial Network Contingency & Monitoring
+# Industrial Network — Interface Monitoring & Prepared Contingency Ports
 
-Sanitized professional case focused on proactive monitoring, interface degradation analysis and controlled network contingency.
+[← All 15 technical cases](../../README.md)
 
-## Objective
+**Author:** Samuel Guigo  
+**Role:** Network & Infrastructure Engineer  
+**Delivery:** Monitoring analysis, reserve-port preparation and operational runbook
 
-Reduce recovery time for industrial network failures without redesigning the production topology.
+## Project summary
 
-## What I worked on
+I combined switch analysis and Zabbix monitoring with prepared contingency interfaces for an industrial network.
 
-I combined Zabbix monitoring, switch analysis and contingency preparation to improve visibility and response readiness.
+I examined availability and interface degradation, mapped spare interfaces, prepared equivalent contingency ports and documented activation, validation and rollback. The reserve ports remained administratively disabled during normal operation.
 
-The documented work included:
+## Operational requirement
 
-- separating availability from quality/degradation monitoring;
-- monitoring interface errors, link state, utilization, CPU, memory and hardware health;
-- comparing interface counters over time;
-- identifying recurring degradation on critical links;
-- mapping available switch interfaces;
-- preparing equivalent contingency ports;
-- keeping backup ports administratively disabled during normal operation;
-- documenting activation, validation and rollback procedures;
-- validating that intended configurations were saved persistently.
+A future link failure should not require an operator to reconstruct the interface configuration under pressure.
 
-## Change-control approach
+The project focused on preparation within the existing network design: improving visibility and making a scoped port migration repeatable without introducing an active alternative path during normal operation.
 
-Contingency was designed to remain non-disruptive during normal operation.
+## My technical responsibilities
 
-Backup interfaces were prepared in advance and left disabled, so a future migration could follow a documented sequence instead of requiring emergency configuration under pressure.
+- Reviewed interface status, errors and utilization.
+- Considered CPU, memory and hardware health alongside interface evidence.
+- Compared counters over time to identify recurring degradation.
+- Mapped available switch interfaces.
+- Prepared contingency-port configuration for the scoped connections.
+- Kept reserve interfaces administratively disabled.
+- Documented activation, service checks and rollback.
+- Checked that intended configurations were saved persistently.
 
-## Technologies
+## Monitoring decisions
 
-- Cisco switching
-- Zabbix
-- Network monitoring
-- Layer 2 troubleshooting
-- Interface counters
-- Runbooks
-- Change management
-- Rollback planning
+### Separate availability from quality
 
-## Outcome
+A link can remain up while accumulating errors. I therefore considered interface-error behavior separately from device reachability and link state.
 
-The monitoring and contingency work established a repeatable operational process for the scoped switches, while continued monitoring remained necessary for interfaces with active degradation.
+### Compare observations over time
+
+A historical counter total and continuing error growth are different observations. I used counter comparison to inform which links needed continued attention.
+
+### Connect monitoring to a response
+
+The monitoring work fed the contingency preparation: the operator needed both an indication of degradation and an understood recovery option.
+
+## Contingency preparation
+
+I mapped the available interfaces and prepared equivalent reserve-port settings for the scoped connections.
+
+The reserve configuration needed to reflect the original connection's intended behavior. The preparation was paired with documentation so the relationship between the active connection and its contingency option remained clear.
+
+I left the prepared interfaces shut down in normal operation. That preserved the intended inactive state until an authorized maintenance or recovery action.
+
+## Activation and rollback runbook
+
+The following describes the documented operating sequence, rather than a claim that every reserve interface was live-tested.
+
+| Stage | Required action | Validation focus |
+|---|---|---|
+| Precheck | Identify the affected connection and corresponding reserve interface | Correct mapping and intended configuration |
+| Preparation | Confirm the maintenance action and original state | A known rollback point |
+| Activation | Move/activate the scoped connection according to the runbook | Expected link and connectivity behavior |
+| Service check | Check the dependent service and interface counters | Operational access and link quality |
+| Rollback if needed | Restore the original connection and state | Recovery of the known path |
+| Closeout | Record the used interface and configuration | Accurate documentation and persistence |
+
+## Outcome and delivery status
+
+The work established prepared contingency interfaces and a repeatable activation/validation process for the scoped switches.
+
+It also made ongoing interface degradation visible as a separate operational concern. A reserve port is a recovery option; it does not by itself repair a faulty cable or prove that every physical fault is resolved.
+
+**Delivered:** monitoring analysis, reserve-port preparation, inactive normal state, persistence checks and operational documentation.
+
+**Ongoing:** observation of degrading links and any remaining controlled migration validation.
+
+## Related incident
+
+[Industrial Ethernet CRC investigation and recovery](../industrial-ethernet-crc-troubleshooting/README.md)
+
+## Skills demonstrated
+
+Cisco switching · Zabbix · Interface diagnostics · Counter analysis · Contingency planning · Configuration persistence · Runbooks · Change validation · Rollback
 
 ## Confidentiality
 
-All client names, hostnames, exact switch ports, VLANs, MAC addresses and internal network identifiers were removed.
+Customer names, internal addresses, hostnames, credentials and identifying infrastructure details are omitted. See the [publication policy](../../SECURITY.md).

@@ -1,34 +1,34 @@
-# Wazuh & Zabbix Lab — Windows Agent Policy and FIM Validation
+# SOC Implementation Workstream — Wazuh, Zabbix & FIM Validation
 
 [← All 15 technical cases](../../README.md)
 
 **Author:** Samuel Guigo  
 **Role:** Infrastructure & Security Monitoring Engineer  
-**Delivery:** Laboratory implementation and controlled telemetry validation
+**Delivery:** Technical implementation and telemetry validation within the internal SOC project
 
 ## Project summary
 
-I worked on a security-monitoring laboratory using Wazuh and Zabbix to evaluate endpoint telemetry and infrastructure observability.
+My team and I are implementing the company's internal SOC. This case documents the Wazuh and Zabbix workstream, including my configuration and validation of endpoint telemetry and infrastructure monitoring.
 
 A concrete validated result was the Windows File Integrity Monitoring test: file creation, modification and deletion were recorded through the centralized Windows-group policy.
 
-The lab also covered agent organization, inventory and vulnerability-related telemetry, with Sysmon integration treated as an initial study.
+The implementation scope also covers agent organization, inventory and vulnerability-related telemetry, with Sysmon integration treated as an initial study.
 
-## Purpose of the lab
+## Role within the SOC implementation
 
-The goal was to establish that telemetry could be collected and interpreted before extending the design into a broader security-operations capability.
+This workstream establishes and validates the telemetry paths needed by the SOC. Controlled tests are used during implementation to check configuration and event collection.
 
-I separated the components being explored from the tests with an observed result. That makes the laboratory useful as an engineering record and as a starting point for repeatable validation.
+I separated the components being explored from the tests with an observed result. This provides a record of implementation progress and a basis for repeatable validation.
 
 ## Technical scope and maturity
 
 | Component | Work represented | Recorded stage |
 |---|---|---|
-| Wazuh Windows agent | Endpoint telemetry and agent organization | Lab work |
-| Central Windows-group policy | Apply the lab monitoring policy centrally | Validated for the FIM scenario |
+| Wazuh Windows agent | Endpoint telemetry and agent organization | Implementation work |
+| Central Windows-group policy | Apply the monitoring policy centrally | Validated for the FIM scenario |
 | File Integrity Monitoring | Create, modify and delete a test file | Events observed |
-| Syscollector | Hardware/software inventory exploration | Broader lab scope |
-| Vulnerability Detection | Vulnerability-related telemetry exploration | Broader lab scope |
+| Syscollector | Hardware/software inventory exploration | Implementation scope |
+| Vulnerability Detection | Vulnerability-related telemetry exploration | Implementation scope |
 | Sysmon | Integration study | Initial study |
 | Zabbix | Availability and capacity monitoring | Infrastructure-monitoring scope |
 
@@ -36,7 +36,7 @@ I separated the components being explored from the tests with an observed result
 
 ### Prepare the controlled test
 
-I used a dedicated lab file and the Windows-group monitoring policy. The test was intended to produce recognizable events without involving production documents.
+I used a dedicated test file and the Windows-group monitoring policy. The test was intended to produce recognizable events without involving production documents.
 
 ### Generate distinct changes
 
@@ -69,17 +69,17 @@ The test validated a specific collection path. Coverage of all endpoints, retent
 
 I defined additional scenarios for agent communication loss, inventory, vulnerability telemetry, Sysmon events, critical disk usage and service failure.
 
-The broader workflow was alert generation, classification, triage and documented resolution. Before expanding that workflow, the lab needed stable collection, severity definitions, rule tuning, false-positive handling, backup and runbooks.
+The broader workflow was alert generation, classification, triage and documented resolution. Before expanding that workflow, the implementation requires stable collection, severity definitions, rule tuning, false-positive handling, backup and runbooks.
 
 ## Outcome
 
 I obtained a concrete successful FIM validation through centralized Windows policy and organized the wider monitoring work into testable components.
 
-The deliverable is a laboratory and validation case. Its contribution to the [SOC MVP design](../soc-mvp-architecture/README.md) is a tested telemetry scenario and a framework for validating further use cases.
+The deliverable is a validated telemetry scenario within the [internal SOC implementation](../soc-mvp-architecture/README.md). My team and I are extending the deployment through additional integrations, use cases and operational procedures.
 
 ## Skills demonstrated
 
-Wazuh · Windows agents · Centralized policy · FIM · Event validation · Syscollector · Security telemetry · Zabbix · Laboratory documentation
+Wazuh · Windows agents · Centralized policy · FIM · Event validation · Syscollector · Security telemetry · Zabbix · Implementation documentation
 
 ## Confidentiality
 

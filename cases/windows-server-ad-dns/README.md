@@ -1,6 +1,6 @@
 # Windows Server 2022 — Active Directory & DNS Preparation
 
-[← All 15 technical cases](../../README.md)
+[← All 13 technical cases](../../README.md)
 
 **Author:** Samuel Guigo  
 **Role:** Windows & Infrastructure Engineer  

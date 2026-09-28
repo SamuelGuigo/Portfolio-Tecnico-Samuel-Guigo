@@ -6,7 +6,9 @@ This portfolio documents my technical responsibilities, the problems I investiga
 
 ## Selected technical work
 
-- **[Greenfield data center implementation](cases/vmware-virtual-infrastructure/README.md):** implementing a two-server HPE environment with ESXi, dedicated storage, seven infrastructure VMs, VLAN/vSwitch networking, QNAP backup storage and RASA-based monitoring.
+- **[Internal SOC implementation](cases/soc-mvp-architecture/README.md):** my team and I are building the company's security-monitoring capability, including telemetry, integrations, validation and operational procedures.
+
+- **[Greenfield data center implementation](cases/vmware-virtual-infrastructure/README.md):** my team and I are configuring the environment at our base for on-site deployment in Sergipe: a two-server HPE environment with ESXi, dedicated storage, seven infrastructure VMs, VLAN/vSwitch networking, QNAP backup storage and RASA-based monitoring.
 
 - **[Server recovery](cases/hpe-proliant-post-memory-troubleshooting/README.md):** isolated a POST memory failure through individual DIMM tests and known-good substitution; restored startup with 64 GB recognized.
 - **[Monitoring engineering](cases/zabbix-dell-n1124p-on/README.md):** adapted a Dell N-Series SNMP template for Zabbix 7, corrected discovery issues and retained device-supported telemetry.
@@ -31,8 +33,8 @@ The delivery stage describes the work documented in each case. Professional prac
 | 9 | [HPE ProLiant — POST memory failure](cases/hpe-proliant-post-memory-troubleshooting/README.md) | Recovery validated | Individual DIMM tests, known-good substitution and 64 GB restored |
 | 10 | [Backup storage — degraded array](cases/backup-storage-troubleshooting/README.md) | Diagnosis / recovery planning | Array-health assessment, rebuild follow-up and recovery criteria |
 | 11 | [Ubuntu & Aptly update repository](cases/linux-aptly-update-repository/README.md) | Implemented / initial validation | Mirrors, snapshots, HTTP publication and client index refresh |
-| 12 | [Wazuh & Zabbix security-monitoring lab](cases/wazuh-zabbix-security-monitoring-lab/README.md) | Lab / FIM test validated | Central Windows policy and create/modify/delete event validation |
-| 13 | [SOC MVP architecture](cases/soc-mvp-architecture/README.md) | Architecture / execution plan | Component ownership, triage workflow and phased adoption |
+| 12 | [SOC telemetry — Wazuh & Zabbix](cases/wazuh-zabbix-security-monitoring-lab/README.md) | Implementation / FIM validated | Central Windows policy and create/modify/delete event validation |
+| 13 | [Internal SOC implementation](cases/soc-mvp-architecture/README.md) | Implementation in progress | Team delivery of security monitoring, integrations and operating procedures |
 | 14 | [Industrial network contingency](cases/industrial-network-contingency-monitoring/README.md) | Preparation / continued monitoring | Reserve ports, persistence checks and activation/rollback runbook |
 | 15 | [Fiber and optical troubleshooting](cases/fiber-optical-link-troubleshooting/README.md) | Professional practice | Optics, power interpretation and physical-path diagnosis |
 
@@ -45,7 +47,7 @@ The delivery stage describes the work documented in each case. Professional prac
 | Network configuration and diagnosis | [MikroTik lab](cases/mikrotik-corporate-network-lab/README.md) · [MAC flapping](cases/layer2-mac-flapping-troubleshooting/README.md) · [Industrial CRC](cases/industrial-ethernet-crc-troubleshooting/README.md) |
 | Linux services | [Ubuntu/Aptly repository](cases/linux-aptly-update-repository/README.md) |
 | Hardware, storage and physical infrastructure | [HPE recovery](cases/hpe-proliant-post-memory-troubleshooting/README.md) · [Backup storage](cases/backup-storage-troubleshooting/README.md) · [Racks](cases/data-center-rack-infrastructure-planning/README.md) · [Fiber](cases/fiber-optical-link-troubleshooting/README.md) |
-| Security monitoring and operational readiness | [Wazuh lab](cases/wazuh-zabbix-security-monitoring-lab/README.md) · [SOC MVP](cases/soc-mvp-architecture/README.md) · [Network contingency](cases/industrial-network-contingency-monitoring/README.md) |
+| Security monitoring and operational readiness | [SOC telemetry](cases/wazuh-zabbix-security-monitoring-lab/README.md) · [SOC implementation](cases/soc-mvp-architecture/README.md) · [Network contingency](cases/industrial-network-contingency-monitoring/README.md) |
 
 ## How I document delivery
 

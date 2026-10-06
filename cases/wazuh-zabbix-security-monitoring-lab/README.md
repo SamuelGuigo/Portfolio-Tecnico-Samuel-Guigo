@@ -1,3 +1,5 @@
-# SOC implementation — consolidated case
+# Wazuh security monitoring — consolidated case
 
-This technical work is part of the same internal SOC project and is documented in the [complete SOC implementation case](../soc-mvp-architecture/README.md), including Wazuh, Zabbix, centralized Windows policies and FIM validation.
+This technical work is documented in the [Wazuh Security Monitoring Baseline](../soc-mvp-architecture/README.md).
+
+The current published scope covers the initial Wazuh implementation, endpoint visibility, inventory and vulnerability monitoring. Broader SOC processes, FIM validation, triage/escalation and operational handover are not presented as completed unless separately evidenced.

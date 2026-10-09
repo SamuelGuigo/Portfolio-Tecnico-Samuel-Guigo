@@ -4,7 +4,7 @@
 
 **Author:** Samuel Guigo  
 **Role:** Infrastructure Engineer  
-**Delivery:** Migration and validation in progress
+**Delivery:** Assigned migration workstream concluded (9 October 2026); final customer acceptance tracked separately
 
 ## Project summary
 
@@ -71,6 +71,10 @@ For each migrated VM:
 - Windows activation state when applicable;
 - remote administration;
 - application-owner validation when applicable.
+
+## October 2026 technical closeout
+
+My assigned engineering workstream was reported concluded on 9 October 2026 following migration, guest-integration and post-change validation. This does not retroactively establish a full backup/restore test, application-owner acceptance or the removal of every transitional access component. See the [sanitized cross-platform handover](../enterprise-infrastructure-handover-2026/README.md).
 
 ## Delivery state
 

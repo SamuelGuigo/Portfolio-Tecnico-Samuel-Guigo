@@ -4,7 +4,7 @@
 
 **Author:** Samuel Guigo  
 **Role:** Infrastructure & Security  
-**Delivery:** Initial implementation / laboratory-to-production evolution
+**Delivery:** Initial implementation and demonstration preparation completed within assigned October 2026 workstream; SOC operations not accepted
 
 ## Project overview
 
@@ -65,6 +65,10 @@ The broader security work includes evaluation and prioritization of infrastructu
 - applicability of findings in industrial/OT environments.
 
 The approach is evidence-driven: a scanner finding is not considered corrected simply because a recommendation exists. Applicability, change impact, rollback and retest must be considered.
+
+## October 2026 update
+
+During the overnight closeout, web access to the Wazuh dashboard was recovered by using its HTTPS endpoint, and a technical walkthrough was prepared around implemented visibility features. The assigned implementation activities were concluded, but no independently verified 24×7 SOC operation, complete enrollment, automated incident response, final presentation delivery or customer acceptance is implied. Related work is documented in the [technical handover](../enterprise-infrastructure-handover-2026/README.md).
 
 ## Next milestones
 

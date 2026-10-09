@@ -65,8 +65,6 @@ Em cada case, diferencio o contexto, as atividades que executei, os testes reali
 
 ## Materiais profissionais
 
-- [Experiência técnica para currículo e entrevistas](career/EXPERIENCIA-PROJETOS-2026.md)
-- [Estratégia de serviços para a Auron Tech](career/ESTRATEGIA-AURON-SERVICOS.md)
 - [Repositório do template Zabbix — Dell N1124P-ON](https://github.com/SamuelGuigo/zabbix-dell-n1124p-on)
 - [Relatório técnico de diagnóstico de memória HPE](cases/hpe-proliant-post-memory-troubleshooting/docs/RELATORIO_TECNICO.md)
 

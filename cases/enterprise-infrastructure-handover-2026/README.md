@@ -1,60 +1,80 @@
-# Enterprise Infrastructure — Final Technical Handover (October 2026)
+# Implantação de infraestrutura corporativa — VMware ESXi, serviços e migração para Proxmox
 
-[← Technical portfolio](../../README.md)
+[← Portfólio técnico](../../README.md)
 
-**Author:** Samuel Guigo  
-**Role:** Infrastructure / Virtualization / Security Engineer  
-**Technical workstream status:** Concluded on 9 October 2026  
-**Customer-wide acceptance:** Not claimed
+**Atuação:** implantação, configuração, migração, troubleshooting e documentação de infraestrutura corporativa  
+**Período documentado:** setembro–outubro de 2026  
+**Conclusão:** frente técnica atribuída encerrada em 09/10/2026; aceite geral da implantação é separado
 
-## Executive summary
+## Resumo
 
-Concluded my assigned technical workstream on a multi-service infrastructure modernization project after overnight implementation and validation activities. The scope combined hypervisor migration, Windows/Linux infrastructure services, endpoint protection, security monitoring and observability. This is a sanitized professional account, not a customer configuration backup or final contractual acceptance report.
+Atuei na implementação de uma infraestrutura corporativa de servidores e serviços, inicialmente sobre **VMware ESXi integrado ao vCenter**. Preparei o hypervisor, criei e configurei máquinas virtuais Windows Server e Ubuntu, apoiei a implantação de serviços de infraestrutura e trabalhei nas dependências de rede, armazenamento, segurança e backup. Posteriormente, uma mudança de plataforma exigiu **migrar as cargas de trabalho para Proxmox VE**, adaptar os guests e verificar novamente seus serviços.
 
-## Work performed and verified in project history
+O principal aprendizado demonstrado é a capacidade de executar **duas etapas substanciais de plataforma**: primeiro construir o ambiente virtual VMware e depois conduzir a transição para Proxmox — não apenas transportar VMs preexistentes.
 
-| Workstream | Recorded delivery | Boundary |
+## Linha do tempo da atuação
+
+### 1. Construção inicial — VMware ESXi e vCenter
+
+- Preparei o ambiente VMware ESXi e sua integração ao vCenter.
+- Trabalhei no provisionamento, dimensionamento e configuração de VMs Windows e Linux.
+- Configurei a integração dos sistemas convidados, atualizações e bases de serviços.
+- Considerei vSwitches/port groups, redes segmentadas e dependências de endereçamento.
+- Estruturei o planejamento de datastore, backup e recuperação.
+
+### 2. Configuração das VMs e dos serviços
+
+| Frente | Trabalho documentado | Limite da afirmação |
 |---|---|---|
-| VMware ESXi → Proxmox VE | Migrated workloads, checked Proxmox operation, VirtIO/guest integration and Windows activation after virtual-hardware changes | Does not imply tested disaster recovery or unconditional acceptance of every application |
-| Windows Server 2022 | Prepared infrastructure VMs and AD/DNS service environment; worked through licensing and post-migration guest checks | Directory-wide health, application-owner signoff and DR are separate validations |
-| Linux update distribution | Implemented Ubuntu/Aptly internal mirror and HTTP publication; validated APT package-index consumption from a client | Does not establish a fully tested fleet-wide patch campaign |
-| WSUS | Windows update infrastructure configured and synchronization work coordinated with the responsible team member | Final GPO rollout and complete endpoint compliance not independently claimed |
-| Security monitoring | Wazuh access and dashboard validation, agent and inventory/vulnerability visibility and technical demonstration preparation | No claim of 24×7 SOC, fully tested FIM, active response or complete agent coverage |
-| Infrastructure monitoring | Zabbix dashboard access restored, initial host-group/agent configuration activities performed; Grafana part of broader observability scope | No claim that every target device, trigger, alert and graph is production-homologated |
-| Endpoint security | Worked on Symantec Endpoint Protection Manager certificate/hostname issue and antivirus rollout to Windows VMs; installation work completed during final shift | Agent-to-manager health, policy coverage and central reporting require documented evidence before broad compliance claims |
-| Networking | Industrial switching, routes/VLAN and server-interconnection activities, with validation coordinated around maintenance windows | No sensitive topology reproduced |
-| Storage and backup | TrueNAS/QNAP and backup integration considered in delivery and handover | No claim of a successful end-to-end restore, complete NAS integration or final backup acceptance |
-| Secure remote access | Temporary transitional connectivity and evaluation/implementation of controlled access tooling | Transitional access must be reviewed and retired according to operations policy |
+| Active Directory e DNS | Duas VMs Windows Server 2022 destinadas a controladores de domínio e DNS; preparação/configuração e testes | Aceite integral de autenticação, redundância, backup e DNS deve ser separado |
+| WSUS | Servidor Windows de atualizações, incluindo conversão de edição Windows e etapas de sincronização/configuração | Políticas GPO, grupos, cliente piloto e conformidade do parque exigem homologação própria |
+| RLSUS / Aptly | Ubuntu Server, mirrors, snapshots, repositórios TEST/PROD e publicação HTTP; validação real de atualização em cliente Linux | Não é prova de atualização de todos os sistemas |
+| NTP e Syslog | VM Ubuntu preparada e verificações de serviços e conectividade | Retenção, integração de todas as fontes e aceite final não presumidos |
+| Backup | VM Windows destinada ao Iperius Full, arquitetura com repositório de backup separado | Integração final ao NAS, jobs e testes de restauração não são alegados como concluídos |
+| SQL / MES | Preparação de VM destinada a aplicação MES e SQL Server | Instalação do SQL e homologação de aplicação atribuídas a outra frente; não reivindico essa entrega |
+| Proteção de endpoint | SEPM e implantação de cliente SEP; investigação de falha de login relacionada a certificado/nome do servidor | Centralização, comunicação de todos os agentes e políticas requerem evidência específica |
+| Armazenamento | Trabalho com desenho e preparação de TrueNAS/ZFS e integração prevista com backup/QNAP | Não declaro teste de restauração de ponta a ponta sem evidência |
 
-## Final overnight activities (8–9 October 2026)
+### 3. Transição VMware → Proxmox
 
-1. Investigated and worked around the endpoint-protection manager access problem associated with a certificate/hostname mismatch after infrastructure changes.
-2. Prioritized deploying endpoint antivirus software to the Windows VMs before the operational cutoff. Installation activities were completed according to the shift report, while centrally managed enrollment/health should be evaluated separately.
-3. Validated Linux host access and package-update considerations; avoided implying that every Linux node had been patched or fully homologated.
-4. Recovered access to the Wazuh web interface using its HTTPS endpoint; prepared a walkthrough focused on actual implemented capabilities.
-5. Recovered access to Zabbix and progressed host-group and agent onboarding.
-6. Reviewed the technical demonstration/meeting scope. A formal standalone Wazuh presentation and customer signoff are **not** claimed.
-7. Closed the assigned engineering workstream and prepared evidence/documentation for management handover.
+- Preparei o ambiente Proxmox VE e a operação do cluster.
+- Migrei workloads existentes do VMware para o novo hypervisor.
+- Ajustei controladoras, interfaces virtuais e drivers **VirtIO** conforme o guest.
+- Trabalhei com integração **QEMU Guest Agent** e validações de inicialização, rede e serviços.
+- Tratei efeitos da mudança de hardware virtual no licenciamento/ativação Windows.
+- Verifiquei a continuidade funcional dos sistemas migrados na etapa técnica.
 
-## What “concluded” means
+**Resultado:** frente de migração e validação técnica de infraestrutura reportada concluída em outubro de 2026. Não equivale a aceite final de todas as aplicações ou recuperação de desastres comprovada.
 
-The assigned implementation and troubleshooting activities were reported finished. This **does not** assert that the entire customer project, all operational controls or all third-party acceptance tests are completed. Responsible teams should explicitly track any residual actions.
+### 4. Monitoramento, segurança e fechamento
 
-## Handover verification items
+- Participei da implantação e configuração do Wazuh em ambiente Docker integrado ao contexto de monitoramento.
+- O diário técnico registrou **14 de 14 agentes Wazuh ativos** em um marco do rollout; não significa que todos os controles de SOC foram concluídos.
+- Trabalhei no acesso ao dashboard, visibilidade de inventário e vulnerabilidades e planejamento de demonstração técnica.
+- Atuei com Zabbix, grupos de hosts, agentes e restabelecimento de acesso ao dashboard.
+- Trabalhei no SEPM, diagnóstico de certificado incompatível com hostname alterado e implantação de proteção nos servidores.
+- Preparei handover com pendências e critérios de validação restantes.
 
-- Export and secure internally approved evidence of endpoint protection coverage, policies and agent-to-manager communication.
-- Verify AD/DNS replication, name resolution, authentication and time sync against the formal acceptance matrix.
-- Confirm WSUS targeting/GPOs and client compliance; confirm Linux patch scope and repository lifecycle.
-- Review Wazuh agent inventory, alert ingestion and vulnerability feeds and document monitoring ownership.
-- Confirm Zabbix agent health, SNMP coverage, host groups, triggers and escalation contacts.
-- Validate backup jobs, off-host retention and an actual restore test; check storage integrations.
-- Remove temporary remote-access paths and verify least-privilege production access.
-- Capture client/operations approval separately from engineering completion.
+## Resultados profissionais comprováveis
 
-## Evidence policy
+- Experiência prática nas **duas plataformas**: implantação inicial VMware ESXi e posterior migração para Proxmox.
+- Provisionamento e configuração de VMs corporativas Windows/Linux e serviços essenciais.
+- Implantação funcional de repositório interno de atualizações Linux, com consumo e atualizações verificadas em cliente piloto.
+- Verificações de agentes, monitoramento e segurança em múltiplas cargas.
+- Troubleshooting de hypervisor, convidados, integrações, ativação e gerenciamento de endpoint.
+- Documentação de limites de entrega, riscos operacionais e dependências entre equipes.
 
-Screenshots, console exports, certificates, credentials, internal IPs and network diagrams must remain in approved private evidence repositories. This public case contains no such artifacts.
+## O que não reivindico
 
-## Technologies
+- Ter implantado o SQL da aplicação sob responsabilidade de outra equipe.
+- Homologação de produção, SLA 24×7, SOC operacional completo ou certificação de conformidade.
+- Backup e restauração integralmente testados sem evidências.
+- Conclusão automática de todas as pendências de storage, rede e aceite do cliente.
 
-Proxmox VE · VMware ESXi · KVM/QEMU · VirtIO · Windows Server 2022 · Active Directory · DNS · WSUS · Ubuntu · Aptly · Symantec Endpoint Protection · Wazuh · Zabbix · Grafana · Siemens Industrial Ethernet · TrueNAS · QNAP · Backup · Secure remote administration
+## Tecnologias
+
+VMware ESXi · vCenter · Proxmox VE · KVM/QEMU · VirtIO · Windows Server 2022 · Active Directory · DNS · WSUS · Ubuntu · Aptly · Nginx · NTP · Syslog · Iperius · TrueNAS · QNAP · Wazuh · Zabbix · Symantec Endpoint Protection · Siemens Industrial Ethernet
+
+## Confidencialidade
+
+Este case é intencionalmente anônimo. Registros técnicos completos, identificadores do cliente, IPs, hostnames, licenças, diagramas reais, configurações e imagens permanecem em documentação privada autorizada. O trabalho ocorreu no contexto de empregador/cliente, não como um contrato realizado pela Auron Tech.

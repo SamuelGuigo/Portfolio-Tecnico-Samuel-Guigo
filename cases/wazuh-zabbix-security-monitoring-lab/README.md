@@ -1,5 +1,8 @@
-# Wazuh security monitoring — consolidated case
+# Monitoramento Wazuh/Zabbix
 
-This technical work is documented in the [Wazuh Security Monitoring Baseline](../soc-mvp-architecture/README.md).
+O conteúdo desta página foi consolidado para manter uma descrição única e atualizada.
 
-The current published scope covers the initial Wazuh implementation, endpoint visibility, inventory and vulnerability monitoring. Broader SOC processes, FIM validation, triage/escalation and operational handover are not presented as completed unless separately evidenced.
+- [Implantação e validação Wazuh](../soc-mvp-architecture/README.md)
+- [Monitoramento Zabbix/Grafana](../zabbix-grafana-infrastructure-monitoring/README.md)
+
+[← Portfólio técnico](../../README.md)

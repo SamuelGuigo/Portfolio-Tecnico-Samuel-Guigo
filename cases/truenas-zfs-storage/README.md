@@ -1,72 +1,42 @@
-# TrueNAS & ZFS Storage — SAS JBOD, RAIDZ2 & Hypervisor Integration
+# Storage TrueNAS com ZFS RAIDZ2
 
-[← Technical portfolio](../../README.md)
+[← Portfólio técnico](../../README.md)
 
-**Author:** Samuel Guigo  
-**Role:** Infrastructure Engineer  
-**Delivery:** Implemented / initial validation
+**Autor:** Samuel Guigo  
+**Tipo:** Projeto profissional  
+**Estado documentado:** Implantado e validado para uso inicial  
+**Origem:** Experiência profissional em equipe; contratação distinta da Auron Tech.
 
-## Project summary
+## Contexto e problema
 
-I implemented a TrueNAS/ZFS storage platform intended to support virtual-machine storage during a virtualization-platform transition.
+Disponibilizar storage para virtualização com redundância ZFS e visibilidade individual dos discos.
 
-The hardware layer uses six 8 TB SAS disks exposed individually to ZFS through JBOD mode. The pool was designed as RAIDZ2 to provide dual-parity protection while maintaining useful capacity for the environment.
+Implantei TrueNAS com discos em JBOD, criei o pool RAIDZ2 e validei integridade ZFS e saúde básica dos discos.
 
-## Storage design
+## Escopo
 
-- **6 × 8 TB SAS HDDs**
-- controller configured to expose disks individually to the operating system
-- ZFS pool using **RAIDZ2**
-- approximately **28.9 TiB usable capacity**
-- TrueNAS as the storage operating system
-- integration path prepared for hypervisor storage use
+Seis HDDs SAS de 8 TB apresentados em JBOD, pool RAIDZ2 e integração inicial ao ambiente de virtualização.
 
-## Why direct disk visibility matters
+## Atividades que executei
 
-ZFS needs direct visibility into individual disks to manage:
+- Preparei o TrueNAS e a apresentação individual dos discos.
+- Criei o pool ZFS RAIDZ2.
+- Verifiquei estado do pool, contadores READ/WRITE/CKSUM e SMART básico.
+- Validei conectividade e disponibilidade do storage para a migração.
 
-- redundancy;
-- checksums;
-- error detection;
-- scrubs;
-- device health;
-- replacement behavior.
+## Resultado documentado
 
-For that reason, the storage design avoids hiding the disks behind a traditional hardware RAID virtual volume.
+Pool ONLINE, aproximadamente 28,94 TiB úteis, sem erros de leitura/escrita/checksum registrados e saúde básica OK nos seis discos no checkpoint documentado.
 
-## Validation
+## Estado da entrega
 
-The implementation includes checks such as:
+- SMART Long e scrub completos permaneciam pendentes para uma janela apropriada.
+- O resultado de saúde inicial não comprova backup/restauração ou disponibilidade sustentada em produção.
 
-- `zpool status`;
-- SMART information per disk;
-- READ/WRITE/CKSUM counters;
-- pool health;
-- device presence and identity;
-- network/storage connectivity before workload migration.
+## Tecnologias
 
-## Operational controls
+TrueNAS · ZFS · RAIDZ2 · SAS · JBOD · SMART
 
-Before using the storage for production workloads, the plan requires:
+## Confidencialidade
 
-1. validate the pool and disks;
-2. configure the storage network;
-3. present storage to the hypervisor;
-4. test I/O and stability;
-5. confirm backup protection;
-6. move workloads in controlled batches;
-7. keep the former datastore available for rollback until acceptance.
-
-## Delivery state
-
-**Implemented:** TrueNAS, disk presentation and RAIDZ2 pool, with initial health validation.
-
-**Pending milestones:** complete production storage-network validation, workload migration, backup/restore validation and final production acceptance.
-
-## Skills demonstrated
-
-TrueNAS · ZFS · RAIDZ2 · SAS storage · JBOD · SMART · Storage validation · Virtualization storage · Capacity planning · Rollback planning
-
-## Confidentiality
-
-Customer names, addresses, hostnames, credentials and sensitive topology are omitted.
+Informações de clientes, localidades, endereços, hostnames, números de série, credenciais, configurações reais e imagens privadas foram omitidas. As evidências completas permanecem em documentação privada. Consulte a [política de publicação](../../SECURITY.md).

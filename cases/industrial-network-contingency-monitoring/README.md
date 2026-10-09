@@ -1,87 +1,42 @@
-# Industrial Network — Interface Monitoring & Prepared Contingency Ports
+# Portas de contingência e monitoramento industrial
 
-[← All 13 technical cases](../../README.md)
+[← Portfólio técnico](../../README.md)
 
-**Author:** Samuel Guigo  
-**Role:** Network & Infrastructure Engineer  
-**Delivery:** Monitoring analysis, reserve-port preparation and operational runbook
+**Autor:** Samuel Guigo  
+**Tipo:** Projeto profissional  
+**Estado documentado:** Portas reserva e runbook preparados  
+**Origem:** Experiência profissional em equipe; contratação distinta da Auron Tech.
 
-## Project summary
+## Contexto e problema
 
-I combined switch analysis and Zabbix monitoring with prepared contingency interfaces for an industrial network.
+Evitar reconstruir a configuração de interface durante uma falha e acompanhar degradação dos enlaces.
 
-I examined availability and interface degradation, mapped spare interfaces, prepared equivalent contingency ports and documented activation, validation and rollback. The reserve ports remained administratively disabled during normal operation.
+Analisei interfaces, preparei portas equivalentes de contingência e documentei ativação, validação e rollback.
 
-## Operational requirement
+## Escopo
 
-A future link failure should not require an operator to reconstruct the interface configuration under pressure.
+Análise de contadores, mapeamento de interfaces livres, configuração reserva e persistência.
 
-The project focused on preparation within the existing network design: improving visibility and making a scoped port migration repeatable without introducing an active alternative path during normal operation.
+## Atividades que executei
 
-## My technical responsibilities
+- Revisei estado, erros, utilização e evolução de contadores.
+- Mapeei interfaces disponíveis e preparei configuração equivalente para as conexões previstas.
+- Mantive as reservas administrativamente desabilitadas em operação normal.
+- Verifiquei persistência e documentei precheck, ativação, validação e rollback.
 
-- Reviewed interface status, errors and utilization.
-- Considered CPU, memory and hardware health alongside interface evidence.
-- Compared counters over time to identify recurring degradation.
-- Mapped available switch interfaces.
-- Prepared contingency-port configuration for the scoped connections.
-- Kept reserve interfaces administratively disabled.
-- Documented activation, service checks and rollback.
-- Checked that intended configurations were saved persistently.
+## Resultado documentado
 
-## Monitoring decisions
+Portas de contingência preparadas e processo de uso documentado para os switches do escopo.
 
-### Separate availability from quality
+## Estado da entrega
 
-A link can remain up while accumulating errors. I therefore considered interface-error behavior separately from device reachability and link state.
+- Não há teste em carga de todas as portas reserva registrado.
+- Uma porta reserva não resolve defeito de cabo nem comprova redundância automática.
 
-### Compare observations over time
+## Tecnologias
 
-A historical counter total and continuing error growth are different observations. I used counter comparison to inform which links needed continued attention.
+Industrial Ethernet · Switching · Zabbix · Contadores · Runbook · Rollback
 
-### Connect monitoring to a response
+## Confidencialidade
 
-The monitoring work fed the contingency preparation: the operator needed both an indication of degradation and an understood recovery option.
-
-## Contingency preparation
-
-I mapped the available interfaces and prepared equivalent reserve-port settings for the scoped connections.
-
-The reserve configuration needed to reflect the original connection's intended behavior. The preparation was paired with documentation so the relationship between the active connection and its contingency option remained clear.
-
-I left the prepared interfaces shut down in normal operation. That preserved the intended inactive state until an authorized maintenance or recovery action.
-
-## Activation and rollback runbook
-
-The following describes the documented operating sequence, rather than a claim that every reserve interface was live-tested.
-
-| Stage | Required action | Validation focus |
-|---|---|---|
-| Precheck | Identify the affected connection and corresponding reserve interface | Correct mapping and intended configuration |
-| Preparation | Confirm the maintenance action and original state | A known rollback point |
-| Activation | Move/activate the scoped connection according to the runbook | Expected link and connectivity behavior |
-| Service check | Check the dependent service and interface counters | Operational access and link quality |
-| Rollback if needed | Restore the original connection and state | Recovery of the known path |
-| Closeout | Record the used interface and configuration | Accurate documentation and persistence |
-
-## Outcome and delivery status
-
-The work established prepared contingency interfaces and a repeatable activation/validation process for the scoped switches.
-
-It also made ongoing interface degradation visible as a separate operational concern. A reserve port is a recovery option; it does not by itself repair a faulty cable or prove that every physical fault is resolved.
-
-**Delivered:** monitoring analysis, reserve-port preparation, inactive normal state, persistence checks and operational documentation.
-
-**Ongoing:** observation of degrading links and any remaining controlled migration validation.
-
-## Related incident
-
-[Industrial Ethernet CRC investigation and recovery](../industrial-ethernet-crc-troubleshooting/README.md)
-
-## Skills demonstrated
-
-Cisco switching · Zabbix · Interface diagnostics · Counter analysis · Contingency planning · Configuration persistence · Runbooks · Change validation · Rollback
-
-## Confidentiality
-
-Customer names, internal addresses, hostnames, credentials and identifying infrastructure details are omitted. See the [publication policy](../../SECURITY.md).
+Informações de clientes, localidades, endereços, hostnames, números de série, credenciais, configurações reais e imagens privadas foram omitidas. As evidências completas permanecem em documentação privada. Consulte a [política de publicação](../../SECURITY.md).

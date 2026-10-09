@@ -1,83 +1,43 @@
-# Data Center Rack Reorganization — Technical Leadership, Survey & Execution Planning
+# Mapeamento e planejamento de reorganização de racks
 
-[← All 13 technical cases](../../README.md)
+[← Portfólio técnico](../../README.md)
 
-**Author:** Samuel Guigo  
-**Role:** Infrastructure Engineer — technical project lead  
-**Delivery:** Field survey, partial execution and detailed reorganization plan
+**Autor:** Samuel Guigo  
+**Tipo:** Projeto profissional  
+**Estado documentado:** Levantamento e plano entregues; execução final pendente  
+**Origem:** Experiência profissional em equipe; contratação distinta da Auron Tech.
 
-## Project summary
+## Contexto e problema
 
-I led the technical work for a corporate rack and cabling reorganization. The project covered network equipment, servers, storage, firewalls, telecom equipment, patch panels and fiber distribution.
+Reorganizar racks e cabeamento com rastreabilidade das conexões e acesso adequado para manutenção.
 
-I performed field identification and connection tracing, developed the intended rack layout and translated the design into materials, execution stages and maintenance-window requirements. The project was still in progress at the documented stage, with field work and inventory refinement already underway.
+Mapeei ativos e conexões, especifiquei materiais e organizei as etapas de mudança dos racks.
 
-## Problem to solve
+## Escopo
 
-The racks needed an organization model that supported maintenance and reliable identification of connections. Moving equipment without a trustworthy inventory would have introduced uncertainty during cutover.
+Inventário, rastreamento físico, layout, caminhos de cabos, especificação de materiais e plano de execução por janela.
 
-I therefore treated equipment identification, connection mapping and the target layout as interdependent workstreams.
+## Atividades que executei
 
-## My responsibilities and deliverables
+- Identifiquei equipamentos e rastreei conexões em campo.
+- Registrei relações entre portas, patch panels e interligações.
+- Planejei layout, organizadores, eletrocalhas, fibra e materiais.
+- Separei tarefas físicas das mudanças com impacto em serviços.
+- Atualizei inventário e documentação conforme o levantamento.
 
-| Workstream | My contribution | Deliverable |
-|---|---|---|
-| Field survey | Identified equipment and traced connections | Improved technical inventory |
-| Mapping | Related switch ports, patch panels and interconnections | Connection records for execution |
-| Layout | Planned equipment placement and access | Target rack organization |
-| Cabling | Defined routing and inter-rack organization | Maintainable cable-path plan |
-| Materials | Evaluated cable management, trays, patching and mounting requirements | Procurement specification |
-| Execution | Structured the work around service dependencies and maintenance windows | Staged execution plan |
-| Documentation | Recorded findings, unresolved links and validation requirements | Field checklist and handoff records |
+## Resultado documentado
 
-## Engineering decisions
+Inventário e plano refinados. O registro existente do site documenta 46 ativos, 23 novos IDs, três interligações rastreadas e aproximadamente 90% das portas de três switches identificadas no estágio do levantamento.
 
-### Map before disconnecting
+## Estado da entrega
 
-I used field surveys, labeling and tracing to improve the inventory. Unresolved connections were kept visible in the working documentation so they could be addressed before physical changes.
+- Esses números são do levantamento documentado, não do aceite final.
+- Reorganização física restante, as-built e validação pós-mudança permaneciam pendentes.
 
-This work made the execution plan more specific than a general instruction to “organize the rack.”
+## Tecnologias
 
-### Make patch panels the maintenance interface
+Rack · Cabeamento estruturado · Patch Panel · DIO · Fibra · Inventário
 
-The target organization emphasized predictable patching and a clean rack front. I planned the relationship between switches and patch panels so routine maintenance could be performed through documented connections.
+## Confidencialidade
 
-### Plan the complete physical route
-
-The design considered cable entry, overhead routing, inter-rack links, fiber distribution and access to equipment. Rack appearance was one consideration; routing and maintainability determined how the organization would function.
-
-### Specify materials from the installation requirement
-
-I worked on organizers, trays, mounting kits, patch cords, fiber distribution and other installation materials. Mount compatibility and equipment support were part of the technical evaluation, reducing ambiguity in the purchasing list.
-
-### Stage physical work around service continuity
-
-I separated assembly and organization tasks from changes that required a service cutover. Maintenance windows and validation steps were part of the execution sequence.
-
-## Field work and project status
-
-The work included identification and tracing in the field, labeling, progressive inventory updates and partial cable-organization work. I used the findings to refine the planned arrangement and material requirements.
-
-**Delivered:** technical survey work, improved inventory, connection mapping, layout planning, materials specification and execution documentation.
-
-**In progress:** the remaining physical reorganization and staged cutovers.
-
-**Final milestone:** as-built records, service validation and customer acceptance after the remaining work.
-
-## Acceptance criteria for the completed layout
-
-- Equipment and connections correspond to the updated inventory.
-- Patch-panel and switch relationships are documented.
-- Cable routing supports maintenance access.
-- Services are checked after each relevant cutover.
-- The final documentation reflects the installed state.
-
-These criteria describe the project closeout; they are not a claim that final acceptance has already occurred.
-
-## Skills demonstrated
-
-Technical project leadership · Rack planning · Structured cabling · Fiber distribution · Asset inventory · Connection tracing · Procurement specification · Change sequencing · Field documentation
-
-## Confidentiality
-
-Customer names, internal addresses, hostnames, credentials and identifying infrastructure details are omitted. See the [publication policy](../../SECURITY.md).
+Informações de clientes, localidades, endereços, hostnames, números de série, credenciais, configurações reais e imagens privadas foram omitidas. As evidências completas permanecem em documentação privada. Consulte a [política de publicação](../../SECURITY.md).

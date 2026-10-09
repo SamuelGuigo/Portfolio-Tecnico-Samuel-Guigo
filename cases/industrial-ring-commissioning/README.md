@@ -1,64 +1,42 @@
-# Industrial Ethernet Ring — Switch Configuration & Local Validation
+# Comissionamento local de anel Ethernet industrial
 
-[← Technical portfolio](../../README.md)
+[← Portfólio técnico](../../README.md)
 
-**Author:** Samuel Guigo  
-**Role:** Infrastructure / Network Engineer  
-**Delivery:** Configured and locally validated
+**Autor:** Samuel Guigo  
+**Tipo:** Projeto profissional  
+**Estado documentado:** Switches configurados e anel validado localmente  
+**Origem:** Experiência profissional em equipe; contratação distinta da Auron Tech.
 
-## Project summary
+## Contexto e problema
 
-I worked on the configuration and validation of industrial Ethernet switches forming a redundancy ring in an OT environment.
+Preparar a camada de switching e conectividade para uma rede OT com redundância em anel.
 
-The objective was to establish the switching layer, validate communication across the ring and separate the technical result from the later documentation and site-acceptance milestones.
+Configurei switches industriais e validei comunicação do anel no estágio local de preparação.
 
-## Technical work
+## Escopo
 
-The activity included:
+Configuração de switches Siemens, revisão de uplinks/interfaces e testes locais de conectividade.
 
-- switch configuration;
-- verification of uplinks and ring members;
-- connectivity tests between segments;
-- review of interface state;
-- local validation after configuration;
-- documentation of remaining acceptance items.
+## Atividades que executei
 
-## OT considerations
+- Configurei switches previstos para o anel.
+- Revisei uplinks, membros e estado de interfaces.
+- Executei testes de conectividade entre os trechos.
+- Registrei pendências de documentação e aceite.
 
-Changes in industrial networks require a more conservative approach than ordinary office-network changes because communication failures can affect production systems.
+## Resultado documentado
 
-The work therefore emphasizes:
+Switches configurados e anel reportado funcional nos testes locais.
 
-- controlled changes;
-- known rollback path;
-- validation after each stage;
-- separation between test success and final production acceptance;
-- final topology/configuration documentation.
+## Estado da entrega
 
-## Related troubleshooting experience
+- SAT, as-built, backup de configuração e testes formais de redundância em campo permaneciam separados da validação local.
+- Não atribuo um protocolo específico de redundância sem evidência no registro.
 
-My industrial-network work also includes analysis of:
+## Tecnologias
 
-- CRC/FCS errors;
-- port negotiation;
-- intermittent links;
-- VLAN and uplink behavior;
-- interface counters;
-- MAC learning;
-- redundant paths;
-- STP/topology behavior;
-- cabling and physical-layer hypotheses.
+Siemens · Industrial Ethernet · VLAN · Switching · OT
 
-## Delivery state
+## Confidencialidade
 
-**Validated:** the switches were configured and the ring was reported as functioning during local testing.
-
-**Pending:** final documentation, configuration backup/sanitization, detailed VLAN/uplink records and formal SAT/as-built acceptance.
-
-## Skills demonstrated
-
-Industrial Ethernet · Siemens switching · Redundancy · VLANs · Interface validation · OT networking · Troubleshooting · Change control · Technical documentation
-
-## Confidentiality
-
-Customer names, internal addresses, device hostnames and sensitive topology are intentionally omitted.
+Informações de clientes, localidades, endereços, hostnames, números de série, credenciais, configurações reais e imagens privadas foram omitidas. As evidências completas permanecem em documentação privada. Consulte a [política de publicação](../../SECURITY.md).

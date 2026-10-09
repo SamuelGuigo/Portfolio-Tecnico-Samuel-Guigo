@@ -1,91 +1,47 @@
-# Wazuh Security Monitoring Baseline — Initial Implementation
+# Wazuh: implantação e validação de recursos
 
-[← Technical portfolio](../../README.md)
+[← Portfólio técnico](../../README.md)
 
-**Author:** Samuel Guigo  
-**Role:** Infrastructure & Security  
-**Delivery:** Initial implementation and demonstration preparation completed within assigned October 2026 workstream; SOC operations not accepted
+**Autor:** Samuel Guigo  
+**Tipo:** Projeto profissional  
+**Estado documentado:** Plataforma e casos de uso validados em homologação  
+**Origem:** Experiência profissional em equipe; contratação distinta da Auron Tech.
 
-## Project overview
+## Contexto e problema
 
-I am implementing Wazuh as the initial security-monitoring platform for an internal infrastructure environment.
+Centralizar telemetria e transformar a implantação de agentes em visibilidade verificável sobre os servidores.
 
-The current work is focused on establishing the technical baseline: agent communication, endpoint visibility, inventory context and vulnerability information. The broader SOC architecture, alert triage, escalation, runbooks, retention, backup and operational handover are roadmap items and are **not presented here as completed capabilities**.
+Implantei Wazuh, organizei agentes e validei coleta Sysmon, FIM Windows, inventário, hardening e alertas por evento controlado.
 
-## Current implemented scope
+## Escopo
 
-The work recorded so far includes:
+Stack single-node em Docker, agentes Windows/Linux e testes de recursos; não inclui operação de SOC 24×7.
 
-- Wazuh platform usage and initial agent deployment;
-- Windows agent organization and communication;
-- hardware/software inventory exploration through Syscollector;
-- vulnerability visibility through Wazuh Vulnerability Detection;
-- review of endpoint and infrastructure security information;
-- documentation of the next technical and operational milestones.
+## Atividades que executei
 
-## Components
+- Implantei a plataforma e organizei agentes por função.
+- Instalei Sysmon nos Windows do lote e validei coleta e regra personalizada por evento controlado.
+- Validei FIM Windows com eventos de criação e alteração em arquivos de teste.
+- Verifiquei inventário, SCA e correlação pacote/CVE em Vulnerability Detection.
+- Habilitei Archives JSON e validei Filebeat, indexação e consulta.
+- Configurei retenção inicial e validei integração automática com Teams por evento controlado.
+- Preparei backup local diário de configurações e validei execução/checksum.
 
-| Component | Current use | Status |
-|---|---|---|
-| Wazuh Manager / Dashboard | Central security visibility | Implemented baseline |
-| Wazuh Agents | Endpoint telemetry | Initial deployment |
-| Syscollector | Hardware/software inventory | Initial use |
-| Vulnerability Detection | Vulnerability-related visibility | Initial use |
-| FIM | Planned/under study | Not claimed as validated |
-| Sysmon | Integration study | Not implemented as a completed feature |
-| Zabbix | Availability/capacity monitoring | Separate monitoring workstream |
-| NetBox | Asset and infrastructure context | Separate inventory workstream |
+## Resultado documentado
 
-## What I do not claim
+14/14 agentes ativos e sincronizados; coleta Sysmon em 11 Windows; FIM added/modified validado em dez servidores Windows; evento controlado indexado e alerta automático recebido no Teams.
 
-This case intentionally does **not** claim:
+## Estado da entrega
 
-- a production SOC operating 24×7;
-- validated incident-response procedures;
-- validated FIM create/modify/delete tests;
-- completed triage/escalation workflow;
-- full endpoint coverage;
-- finalized retention;
-- automated blocking or response;
-- backup/recovery of the complete security stack;
-- final operational acceptance.
+- Esses números descrevem checkpoints de homologação, não cobertura ou SLA permanentes.
+- FIM Linux e cobertura fora do lote Windows exigiam consolidação adicional.
+- Retenção contínua, cópia externa, snapshots de índices e restore funcional permaneciam pendentes.
+- Notificação automática no Teams não é bloqueio automático ou Active Response homologado.
 
-Those items require their own evidence and validation before being presented as delivered.
+## Tecnologias
 
-## Security work around the platform
+Wazuh · Docker · Sysmon · FIM · Syscollector · SCA · Vulnerability Detection · Filebeat · Teams
 
-The broader security work includes evaluation and prioritization of infrastructure findings such as:
+## Confidencialidade
 
-- SMB configuration;
-- TLS versions and cipher exposure;
-- OpenSSH findings;
-- NGINX findings;
-- certificates;
-- hypervisor vulnerabilities;
-- applicability of findings in industrial/OT environments.
-
-The approach is evidence-driven: a scanner finding is not considered corrected simply because a recommendation exists. Applicability, change impact, rollback and retest must be considered.
-
-## October 2026 update
-
-During the overnight closeout, web access to the Wazuh dashboard was recovered by using its HTTPS endpoint, and a technical walkthrough was prepared around implemented visibility features. The assigned implementation activities were concluded, but no independently verified 24×7 SOC operation, complete enrollment, automated incident response, final presentation delivery or customer acceptance is implied. Related work is documented in the [technical handover](../enterprise-infrastructure-handover-2026/README.md).
-
-## Next milestones
-
-- expand authorized endpoint coverage;
-- tune agent policies and security data;
-- validate selected Wazuh use cases;
-- define severity and ownership;
-- document runbooks;
-- define retention and storage;
-- protect the monitoring infrastructure with backup/recovery;
-- integrate asset context where useful;
-- establish operational acceptance criteria.
-
-## Skills demonstrated
-
-Wazuh · Endpoint security monitoring · Vulnerability visibility · Windows/Linux · Syscollector · Infrastructure security · Documentation · Security architecture planning
-
-## Confidentiality
-
-Customer and internal identifying details are intentionally omitted. See the [publication policy](../../SECURITY.md).
+Informações de clientes, localidades, endereços, hostnames, números de série, credenciais, configurações reais e imagens privadas foram omitidas. As evidências completas permanecem em documentação privada. Consulte a [política de publicação](../../SECURITY.md).

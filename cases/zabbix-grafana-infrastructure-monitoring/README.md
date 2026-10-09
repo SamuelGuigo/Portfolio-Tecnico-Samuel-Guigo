@@ -1,79 +1,43 @@
-# Zabbix & Grafana — Infrastructure Monitoring and Diagnostic Visibility
+# Monitoramento de infraestrutura com Zabbix e Grafana
 
-[← All 13 technical cases](../../README.md)
+[← Portfólio técnico](../../README.md)
 
-**Author:** Samuel Guigo  
-**Role:** Monitoring & Infrastructure Engineer  
-**Delivery:** Professional monitoring practice, troubleshooting and reporting
+**Autor:** Samuel Guigo  
+**Tipo:** Prática profissional  
+**Estado documentado:** Coleta e diagnóstico documentados  
+**Origem:** Experiência profissional em equipe; contratação distinta da Auron Tech.
 
-## Professional summary
+## Contexto e problema
 
-I work with Zabbix and Grafana to monitor servers, network devices and infrastructure services. My responsibilities cover metric collection, item and discovery troubleshooting, alert interpretation, dashboards and resource-usage analysis.
+Obter visibilidade de disponibilidade, capacidade e degradação sem depender apenas do estado up/down.
 
-This case consolidates my monitoring work. The [Dell template case](../zabbix-dell-n1124p-on/README.md) provides a separate, concrete example of the SNMP template engineering within that scope.
+Configurei e investiguei coleta por agentes/SNMP, interpretei métricas e trabalhei com dashboards de infraestrutura.
 
-## Operational requirement
+## Escopo
 
-Monitoring needs to explain the state of the service, not just display a reachable host. A device can respond while its storage approaches capacity or its network interfaces accumulate errors.
+Prática consolidada em servidores, equipamentos de rede, serviços, dashboards e relatórios; não representa um único incidente.
 
-I organize the monitoring view around availability, performance, capacity and degradation. This gives troubleshooting a more useful starting point than a single up/down indicator.
+## Atividades que executei
 
-## My technical work
+- Trabalhei com Zabbix Server, agentes e SNMP.
+- Investiguei itens não suportados, falhas de discovery e contadores ausentes.
+- Analisei CPU, memória, storage e erros de interfaces.
+- Trabalhei em dashboards Grafana e relatórios de uso de recursos.
+- No projeto de infraestrutura, corrigi rota de retorno que impedia a comunicação dos agentes da VM de backup.
 
-- Worked with Zabbix Server, agents and SNMP collection.
-- Monitored host availability and network-interface state.
-- Analyzed CPU, memory and storage usage.
-- Worked on service-health items, triggers and alerts.
-- Troubleshot unsupported items and discovery failures.
-- Investigated missing counters and unstable SNMP indexes.
-- Built or worked with dashboards and Grafana visualization.
-- Prepared resource-usage reporting for infrastructure review.
+## Resultado documentado
 
-## Collection and interpretation model
+Coleta e disponibilidade dos hosts do projeto registradas como funcionais após correções de conectividade; o case Dell detalha um resultado específico de engenharia de template.
 
-| Monitoring layer | Typical evidence | Operational question |
-|---|---|---|
-| Availability | Host, service and interface status | Is the monitored component responding? |
-| Performance | CPU, memory and interface utilization | What is affecting current behavior? |
-| Capacity | Storage and utilization trends | Is the component approaching a limit? |
-| Degradation | Interface errors and hardware health | Is the component deteriorating while still reachable? |
+## Estado da entrega
 
-These layers complement one another. I use their relationship to decide whether an alert points to a service interruption, a resource constraint or an emerging hardware/network problem.
+- Uma entrada local legada de self-monitoring e acabamento de grupos/mapas/triggers permaneciam pendentes.
+- Não há percentual comprovado de redução de downtime ou tempo de atendimento.
 
-## Troubleshooting the monitoring itself
+## Tecnologias
 
-### Unsupported items
+Zabbix · Grafana · SNMP · Agents · LLD · Dashboards
 
-I inspect whether an item is querying a supported object and whether its definition matches the device or agent. Fixing the collection problem comes before using the value in a dashboard or trigger.
+## Confidencialidade
 
-### Discovery reliability
-
-Discovery is useful only when the discovered identity remains meaningful. I investigate index changes, key collisions and missing objects because these can make a dashboard misleading even when the collection pipeline is running.
-
-### Counter coverage
-
-I check which counters are actually available on the device. The Dell project required a fallback for interfaces without the expected high-capacity counters, illustrating why one inherited template cannot be assumed to fit every interface.
-
-### Alert usefulness
-
-I review noisy triggers and incomplete coverage in the context of the underlying collection. The goal is to make the signal useful for investigation and response rather than simply increase the number of monitored items.
-
-## Deliverables and professional value
-
-My work produces usable infrastructure visibility, technical findings and resource-usage reporting. It connects monitoring data to the equipment and service behavior being investigated.
-
-This consolidated case does not assign a measured reduction in downtime or troubleshooting time. Its concrete contribution is the configuration, diagnostic work and interpretation needed to make monitoring useful in day-to-day operations.
-
-## Related technical work
-
-- [SNMP template adaptation and validation](../zabbix-dell-n1124p-on/README.md)
-- [Industrial interface monitoring and contingency](../industrial-network-contingency-monitoring/README.md)
-- [Internal SOC implementation](../soc-mvp-architecture/README.md)
-
-## Skills demonstrated
-
-Zabbix · Grafana · SNMP · Agents · Low-level discovery · Triggers · Capacity analysis · Interface counters · Dashboards · Technical reporting
-
-## Confidentiality
-
-Customer names, internal addresses, hostnames, credentials and identifying infrastructure details are omitted. See the [publication policy](../../SECURITY.md).
+Informações de clientes, localidades, endereços, hostnames, números de série, credenciais, configurações reais e imagens privadas foram omitidas. As evidências completas permanecem em documentação privada. Consulte a [política de publicação](../../SECURITY.md).

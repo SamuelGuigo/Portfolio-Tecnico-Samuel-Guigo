@@ -1,96 +1,43 @@
-# Ubuntu & Aptly — Internal Linux Update Repository Implementation
+# Repositório Linux com Aptly e Nginx
 
-[← All 13 technical cases](../../README.md)
+[← Portfólio técnico](../../README.md)
 
-**Author:** Samuel Guigo  
-**Role:** Linux & Infrastructure Engineer  
-**Delivery:** Repository deployment and initial client homologation
+**Autor:** Samuel Guigo  
+**Tipo:** Projeto profissional  
+**Estado documentado:** Repositório e atualização piloto validados  
+**Origem:** Experiência profissional em equipe; contratação distinta da Auron Tech.
 
-## Project summary
+## Contexto e problema
 
-I implemented an internal Ubuntu package repository using **Aptly**. I prepared the Ubuntu Server environment, configured the selected repository mirrors, worked with snapshots and published the repository over HTTP for internal consumption.
+Centralizar a distribuição de pacotes Ubuntu e controlar quais versões ficam disponíveis aos servidores.
 
-I then validated initial consumption from a Linux client using `apt update`. That test confirmed the path from the client to the published repository metadata.
+Implantei um repositório Ubuntu com mirrors, snapshots e canais TEST/PROD e validei seu consumo em um cliente piloto.
 
-## Requirement
+## Escopo
 
-The infrastructure needed a local service through which authorized Ubuntu systems could obtain package metadata and selected updates.
+Ubuntu 24.04/Noble, arquitetura amd64, Aptly, Nginx, GPG e publicação interna de pacotes.
 
-I treated the solution as a package-distribution service with separate stages: upstream synchronization, snapshot preparation, publication and client consumption.
+## Atividades que executei
 
-## Implementation scope
+- Preparei Ubuntu Server e o serviço Aptly.
+- Configurei mirrors Noble/Noble Updates e snapshots.
+- Publiquei canais TEST/PROD com Nginx e trabalhei na assinatura GPG.
+- Validei índices APT e a aplicação de atualizações no piloto.
+- Documentei sincronização, retenção e proteção de chaves/configuração.
 
-| Component | Implemented scope |
-|---|---|
-| Repository server | Ubuntu Server |
-| Repository manager | Aptly |
-| Ubuntu release | Noble |
-| Suites | `noble` and `noble-updates` |
-| Architecture | `amd64` |
-| Preparation model | Mirror and snapshot-based workflow |
-| Publication | Internal HTTP repository |
-| Initial validation | Linux client package-index refresh |
+## Resultado documentado
 
-## Work I performed
+Repositório consumido pelo cliente piloto, com nove atualizações reais aplicadas no ciclo documentado.
 
-### Prepare the Linux platform
+## Estado da entrega
 
-I configured the Ubuntu environment that would host the repository, including the system and network preparation needed to make the service reachable in the working environment.
+- O piloto não comprova atualização de todo o parque.
+- Política definitiva de sincronização, retenção/runbook e backup de chaves/configuração permaneciam pendentes.
 
-Repository storage was a material part of the build because mirrored packages and snapshots require ongoing capacity management.
+## Tecnologias
 
-### Configure the mirror scope
+Ubuntu 24.04 · Aptly · APT · Nginx · GPG · Snapshots
 
-I configured the selected Ubuntu repositories and architecture in Aptly. Defining the mirrored scope kept the initial deployment tied to the intended client operating system.
+## Confidencialidade
 
-The repository was built for the documented Noble scope; it was not presented as covering every Ubuntu release or every package source.
-
-### Prepare snapshots and publication
-
-I used the snapshot-based preparation model and published the content through a local HTTP endpoint.
-
-The distinction between synchronization and publication is operationally useful: collecting upstream content and deciding which content clients consume are different steps in the repository workflow.
-
-### Validate the client path
-
-I used a Linux client to query the internal publication and run `apt update`.
-
-**Observed result:** the client successfully accessed repository metadata and consumed package indexes during initial homologation.
-
-That result validated basic reachability and index consumption. It was not equivalent to a full update campaign across every client or application.
-
-## Operational handoff
-
-I documented the additional controls needed for broader use:
-
-| Control | Purpose |
-|---|---|
-| Synchronization schedule | Keep the mirrored content current through a defined process |
-| Snapshot retention and cleanup | Manage storage growth |
-| Signing and integrity validation | Establish the intended trust model |
-| Filesystem monitoring | Detect capacity constraints |
-| Additional client homologation | Validate wider service consumption |
-| Configuration backup | Preserve the repository configuration |
-| Rollback procedure | Define how to return to a selected publication state |
-
-## Outcome and status
-
-**Implemented:** the Ubuntu/Aptly repository with selected mirrors, snapshot preparation and HTTP publication.
-
-**Validated:** initial Linux client access and package-index refresh.
-
-**Remaining for broader rollout:** operational scheduling, retention/cleanup, integrity checks, additional client testing, monitoring and final acceptance.
-
-This was a working service delivery through initial homologation, with the next operational tasks explicitly recorded.
-
-## Related project
-
-[VMware and Windows/Linux infrastructure build](../vmware-virtual-infrastructure/README.md)
-
-## Skills demonstrated
-
-Ubuntu Server · Aptly · APT · Repository mirroring · Snapshots · HTTP publication · Linux administration · Client validation · Operational documentation
-
-## Confidentiality
-
-Customer names, internal addresses, hostnames, credentials and identifying infrastructure details are omitted. See the [publication policy](../../SECURITY.md).
+Informações de clientes, localidades, endereços, hostnames, números de série, credenciais, configurações reais e imagens privadas foram omitidas. As evidências completas permanecem em documentação privada. Consulte a [política de publicação](../../SECURITY.md).

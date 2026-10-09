@@ -1,91 +1,47 @@
-# VMware to Proxmox VE Migration — Cluster, Guests & Validation
+# Migração VMware → Proxmox VE
 
-[← Technical portfolio](../../README.md)
+[← Portfólio técnico](../../README.md)
 
-**Author:** Samuel Guigo  
-**Role:** Infrastructure Engineer  
-**Delivery:** Assigned migration workstream concluded (9 October 2026); final customer acceptance tracked separately
+**Autor:** Samuel Guigo  
+**Tipo:** Projeto profissional  
+**Estado documentado:** Migração concluída e validada na frente técnica  
+**Origem:** Experiência profissional em equipe; contratação distinta da Auron Tech.
 
-## Project summary
+## Contexto e problema
 
-I am participating directly in the migration of a virtual infrastructure from VMware ESXi to Proxmox VE.
+Mudar o hypervisor de uma infraestrutura já implantada, preservando a operação dos serviços e uma sequência controlada de validação.
 
-Before the migration, I had already worked on the **initial VMware ESXi deployment, vCenter integration, VM provisioning and Windows/Linux service setup** for this infrastructure. A later platform change required migrating those workloads to Proxmox VE, including host and cluster preparation, guest adaptation to KVM/QEMU, and post-migration validation. The full lifecycle is documented in the [enterprise infrastructure case](../enterprise-infrastructure-handover-2026/README.md). The project is being executed in stages so that each workload can be validated before the next one is moved.
+Migrei VMs Windows/Linux do VMware para Proxmox e validei boot, rede, serviços e integração dos convidados.
 
-## Scope
+## Escopo
 
-The environment includes Windows Server and Linux workloads providing infrastructure and application-support services.
+Instalação de hosts, cluster de transição, movimentação das VMs e adaptação dos sistemas convidados. O cluster facilitou a migração; não é apresentado como HA de produção homologado.
 
-My work includes:
+## Atividades que executei
 
-- Proxmox VE installation and host preparation;
-- cluster creation and node integration;
-- guest migration from VMware;
-- VirtIO driver installation;
-- QEMU Guest Agent deployment and validation;
-- memory-ballooning review;
-- Windows Server licensing/activation follow-up after hypervisor change;
-- temporary remote-access enablement during the transition;
-- validation of boot, network, storage and services after migration.
+- Preparei o Proxmox definitivo e o cluster utilizado na transição.
+- Migrei as cargas por etapas, revisando BIOS/UEFI, recursos, discos, bridges e VLANs.
+- Instalei e validei VirtIO e QEMU Guest Agent nos Windows aplicáveis.
+- Regularizei a ativação Windows após a mudança do hardware virtual.
+- Verifiquei inicialização, conectividade, storage e serviços após cada movimentação.
 
-## Guest adaptation
+## Resultado documentado
 
-VMware guests moved to KVM/QEMU require specific attention to virtual hardware and guest integration.
+VMs migradas e estabilizadas no host definitivo em outubro de 2026; o equipamento temporário foi liberado para sua função de observabilidade.
 
-### Windows guests
+## Estado da entrega
 
-I worked with:
+- Aceite das aplicações, backup/restauração e retirada do acesso transitório são etapas próprias.
+- A migração e a implantação VMware original fazem parte do mesmo projeto descrito no case consolidado.
 
-- VirtIO driver ISO;
-- VirtIO storage/network support;
-- QEMU Guest Agent;
-- UEFI/OVMF guest configuration where applicable;
-- network adapter validation;
-- memory allocation and ballooning behavior;
-- Windows Server 2022 Datacenter activation validation after the hypervisor change.
+## Tecnologias
 
-The hypervisor transition changed the virtual hardware identity exposed to Windows, so activation status was treated as a separate post-migration validation item rather than assumed to remain unchanged.
+VMware ESXi · Proxmox VE · KVM/QEMU · VirtIO · QEMU Guest Agent · Windows Server · Linux
 
-## Cluster and transition model
+## Confidencialidade
 
-The migration uses a staged model:
+Informações de clientes, localidades, endereços, hostnames, números de série, credenciais, configurações reais e imagens privadas foram omitidas. As evidências completas permanecem em documentação privada. Consulte a [política de publicação](../../SECURITY.md).
 
-1. prepare the definitive Proxmox host;
-2. join the required nodes to the cluster;
-3. move or restore workloads in a controlled order;
-4. validate each guest;
-5. keep rollback options available while the transition is open;
-6. retire temporary components only after validation.
+## Projeto relacionado
 
-## Validation checklist
-
-For each migrated VM:
-
-- boot without recovery errors;
-- expected CPU/RAM allocation;
-- network connectivity;
-- DNS and gateway behavior;
-- storage availability;
-- required services running;
-- guest agent state;
-- Windows activation state when applicable;
-- remote administration;
-- application-owner validation when applicable.
-
-## October 2026 technical closeout
-
-My assigned engineering workstream was reported concluded on 9 October 2026 following migration, guest-integration and post-change validation. This does not retroactively establish a full backup/restore test, application-owner acceptance or the removal of every transitional access component. See the [sanitized cross-platform handover](../enterprise-infrastructure-handover-2026/README.md).
-
-## Delivery state
-
-**Validated so far:** Proxmox host and cluster operation, migrated guest operation for selected workloads, VirtIO/QEMU Guest Agent on pilot Windows guests, and post-migration Windows activation on validated servers.
-
-**Still in progress:** completion of all workload migrations, final backup/recovery validation, production acceptance and retirement of transitional components.
-
-## Skills demonstrated
-
-Proxmox VE · VMware ESXi · KVM/QEMU · VirtIO · QEMU Guest Agent · Windows Server · Linux · Cluster administration · VM migration · Troubleshooting · Change validation
-
-## Confidentiality
-
-Customer names, addresses, hostnames, credentials and sensitive topology are omitted.
+[Implantação completa e transição de plataforma](../enterprise-infrastructure-handover-2026/README.md)

@@ -4,6 +4,10 @@ I design, implement and troubleshoot infrastructure across **virtualization, Win
 
 This portfolio documents professional work, incident response, hands-on implementation, labs and architecture deliverables. Customer names, internal addresses, hostnames, credentials and sensitive topology are intentionally removed.
 
+## Project closeout — October 2026
+
+- **[Enterprise infrastructure technical handover](cases/enterprise-infrastructure-handover-2026/README.md):** concluded assigned October 2026 engineering workstream after Proxmox migration, Windows/Linux services, endpoint protection, Wazuh and Zabbix activities. Formal customer acceptance and remaining operational verifications are tracked separately.
+
 ## Selected technical work
 
 - **[VMware → Proxmox migration](cases/proxmox-virtualization-migration/README.md):** migration of Windows/Linux workloads to Proxmox VE, cluster setup, VirtIO/QEMU adaptation and staged validation.
@@ -39,6 +43,7 @@ The delivery stage is intentionally explicit. **Planned** work is not presented 
 | 14 | [Wazuh security monitoring baseline](cases/soc-mvp-architecture/README.md) | Initial implementation | Agents, endpoint visibility, inventory and vulnerability monitoring |
 | 15 | [Industrial network contingency](cases/industrial-network-contingency-monitoring/README.md) | Preparation / continued monitoring | Reserve ports, persistence checks and activation/rollback runbook |
 | 16 | [Fiber and optical troubleshooting](cases/fiber-optical-link-troubleshooting/README.md) | Professional practice | Optics, power interpretation and physical-path diagnosis |
+| 17 | [Enterprise infrastructure technical handover — October 2026](cases/enterprise-infrastructure-handover-2026/README.md) | Assigned workstream concluded; client-wide acceptance separate | Hypervisor migration, server services, endpoint protection, Wazuh/Zabbix and handover checks |
 
 ## Professional scope represented
 

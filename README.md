@@ -1,33 +1,33 @@
-# Samuel Guigo — Infrastructure, Network & Security Engineering
+# Samuel Guigo — Engenharia de Infraestrutura, Redes e Segurança
 
-I design, implement and troubleshoot infrastructure across **virtualization, Windows/Linux, networking, storage, observability, cybersecurity and industrial Ethernet/OT**.
+Sou profissional de infraestrutura de TI, com atuação em **virtualização, Windows/Linux, redes, armazenamento, observabilidade, cibersegurança e Ethernet industrial/OT**.
 
-This portfolio documents professional work, incident response, hands-on implementation, labs and architecture deliverables. Customer names, internal addresses, hostnames, credentials and sensitive topology are intentionally removed.
+Neste portfólio apresento projetos em que atuei, investigações de incidentes, implementações práticas, laboratórios e entregáveis de arquitetura. Para preservar a confidencialidade, não divulgo nomes de clientes, endereços internos, hostnames, credenciais ou topologias sensíveis.
 
-## Project closeout — October 2026
+## Encerramento técnico — outubro de 2026
 
-- **[Enterprise infrastructure technical handover](cases/enterprise-infrastructure-handover-2026/README.md):** concluded assigned October 2026 engineering workstream after Proxmox migration, Windows/Linux services, endpoint protection, Wazuh and Zabbix activities. Formal customer acceptance and remaining operational verifications are tracked separately.
+- **[Handover técnico de infraestrutura corporativa](cases/enterprise-infrastructure-handover-2026/README.md):** concluí minha frente técnica em um projeto de modernização de infraestrutura, envolvendo migração para Proxmox, serviços Windows/Linux, proteção de endpoints, Wazuh e Zabbix. O aceite formal do cliente e outras verificações operacionais são etapas independentes.
 
-## Selected technical work
+## Trabalhos técnicos selecionados
 
-- **[VMware → Proxmox migration](cases/proxmox-virtualization-migration/README.md):** migration of Windows/Linux workloads to Proxmox VE, cluster setup, VirtIO/QEMU adaptation and staged validation.
-- **[TrueNAS/ZFS storage](cases/truenas-zfs-storage/README.md):** deployment of a ZFS storage platform with six 8 TB SAS disks in JBOD and RAIDZ2, including SMART and pool-integrity validation.
-- **[Industrial Ethernet ring commissioning](cases/industrial-ring-commissioning/README.md):** switch configuration and local validation of an industrial redundancy ring, keeping production acceptance and SAT as separate milestones.
-- **[Wazuh security monitoring baseline](cases/soc-mvp-architecture/README.md):** initial Wazuh implementation for endpoint telemetry, inventory and vulnerability visibility, with the broader SOC operating model still in evolution.
-- **[Greenfield data center implementation](cases/vmware-virtual-infrastructure/README.md):** HPE compute/storage, infrastructure VMs, VLAN/vSwitch networking, backup storage and monitoring preparation for field deployment.
-- **[Server recovery](cases/hpe-proliant-post-memory-troubleshooting/README.md):** isolated a POST memory failure through individual DIMM testing and known-good substitution; startup was restored with 64 GB recognized.
-- **[Monitoring engineering](cases/zabbix-dell-n1124p-on/README.md):** adapted a Dell N-Series SNMP template for Zabbix 7 and reduced unsupported items from 13 to 0.
-- **[Linux update repository](cases/linux-aptly-update-repository/README.md):** deployed Aptly/Nginx repository infrastructure and validated package-index consumption from a Linux client.
-- **[Network incident response](cases/industrial-ethernet-crc-troubleshooting/README.md):** investigated active interface errors, isolated ports and worked through link recovery.
-- **[Physical infrastructure leadership](cases/data-center-rack-infrastructure-planning/README.md):** led survey, mapping, material specification and staged rack-reorganization planning.
+- **[VMware → Proxmox](cases/proxmox-virtualization-migration/README.md):** participei da migração de VMs Windows/Linux para Proxmox VE, configuração de cluster, adaptação VirtIO/QEMU e validações por etapas.
+- **[Armazenamento TrueNAS/ZFS](cases/truenas-zfs-storage/README.md):** implantei uma plataforma ZFS com seis discos SAS de 8 TB em JBOD e RAIDZ2, incluindo verificações SMART e integridade do pool.
+- **[Anel Ethernet industrial](cases/industrial-ring-commissioning/README.md):** configurei switches e validei localmente um anel de redundância industrial, mantendo o aceite de produção e SAT como marcos separados.
+- **[Monitoramento de segurança com Wazuh](cases/soc-mvp-architecture/README.md):** implementei a base inicial de telemetria de endpoints, inventário e visibilidade de vulnerabilidades; a operação completa de SOC continua sendo uma frente distinta.
+- **[Data center greenfield](cases/vmware-virtual-infrastructure/README.md):** trabalhei na preparação de infraestrutura HPE, VMs, redes VLAN/vSwitch, armazenamento para backup e monitoramento.
+- **[Recuperação de servidor HPE](cases/hpe-proliant-post-memory-troubleshooting/README.md):** isolei uma falha de memória durante o POST por meio de testes individuais de DIMMs e substituição por módulos conhecidos como funcionais; restabeleci a inicialização com 64 GB reconhecidos.
+- **[Engenharia de monitoramento Zabbix](cases/zabbix-dell-n1124p-on/README.md):** adaptei um template SNMP Dell N-Series ao Zabbix 7 e reduzi de 13 para zero os itens não suportados.
+- **[Repositório de atualizações Linux](cases/linux-aptly-update-repository/README.md):** implantei a infraestrutura Aptly/Nginx e validei o consumo de índices de pacotes por um cliente Linux.
+- **[Diagnóstico de incidente de rede](cases/industrial-ethernet-crc-troubleshooting/README.md):** investiguei erros de interface, isolei portas e atuei no restabelecimento do enlace.
+- **[Infraestrutura física e racks](cases/data-center-rack-infrastructure-planning/README.md):** conduzi levantamentos técnicos, mapeamento, especificação de materiais e planejamento escalonado de reorganização de racks.
 
-## Technical cases
+## Cases técnicos
 
-The delivery stage is intentionally explicit. **Planned** work is not presented as delivered, and **laboratory** validation is separated from production implementation.
+Identifico claramente o estágio de cada entrega. Não apresento atividades planejadas como concluídas e diferencio testes de laboratório de validações em produção.
 
-| # | Case | Delivery stage | Technical contribution |
+| # | Case | Etapa de entrega | Contribuição técnica |
 |---|---|---|---|
-| 1 | [VMware → Proxmox migration](cases/proxmox-virtualization-migration/README.md) | Migration / validation in progress | Proxmox cluster, VirtIO/QEMU adaptation, staged workload validation |
+| 1 | [VMware → Proxmox migration](cases/proxmox-virtualization-migration/README.md) | Atuação técnica concluída; aceite geral separado | Proxmox cluster, VirtIO/QEMU adaptation, staged workload validation |
 | 2 | [TrueNAS/ZFS storage](cases/truenas-zfs-storage/README.md) | Implemented / initial validation | 6×8 TB SAS, JBOD, RAIDZ2, SMART and ZFS validation |
 | 3 | [Industrial Ethernet ring commissioning](cases/industrial-ring-commissioning/README.md) | Locally validated | Switch configuration and ring validation; final documentation/SAT pending |
 | 4 | [Zabbix 7 template engineering — Dell N1124P-ON](cases/zabbix-dell-n1124p-on/README.md) | Template adaptation and validation | Compatibility fixes, LLD corrections and counter fallback |
@@ -43,42 +43,33 @@ The delivery stage is intentionally explicit. **Planned** work is not presented 
 | 14 | [Wazuh security monitoring baseline](cases/soc-mvp-architecture/README.md) | Initial implementation | Agents, endpoint visibility, inventory and vulnerability monitoring |
 | 15 | [Industrial network contingency](cases/industrial-network-contingency-monitoring/README.md) | Preparation / continued monitoring | Reserve ports, persistence checks and activation/rollback runbook |
 | 16 | [Fiber and optical troubleshooting](cases/fiber-optical-link-troubleshooting/README.md) | Professional practice | Optics, power interpretation and physical-path diagnosis |
-| 17 | [Enterprise infrastructure technical handover — October 2026](cases/enterprise-infrastructure-handover-2026/README.md) | Assigned workstream concluded; client-wide acceptance separate | Hypervisor migration, server services, endpoint protection, Wazuh/Zabbix and handover checks |
+| 17 | [Enterprise infrastructure technical handover — October 2026](cases/enterprise-infrastructure-handover-2026/README.md) | Minha atuação concluída; aceite do cliente separado | Hypervisor migration, server services, endpoint protection, Wazuh/Zabbix and handover checks |
 
-## Professional scope represented
+## Áreas de atuação
 
-### Datacenter & Virtualization
-Proxmox VE · VMware ESXi/vCenter · KVM/QEMU · VirtIO · Windows Server · Linux · TrueNAS/ZFS · QNAP · backup and recovery
+### Data center e virtualização
+Proxmox VE · VMware ESXi/vCenter · KVM/QEMU · VirtIO · Windows Server · Linux · TrueNAS/ZFS · QNAP · backup e recuperação
 
-### Networks & OT
-Cisco · MikroTik · Siemens industrial Ethernet · VLANs · STP/LACP · routing · VPN · CRC/FCS analysis · optical troubleshooting
+### Redes e OT
+Cisco · MikroTik · Ethernet industrial Siemens · VLANs · STP/LACP · roteamento · VPN · análise CRC/FCS · diagnóstico óptico
 
-### Monitoring & Security
-Zabbix · Grafana · SNMP/LLD · Wazuh · vulnerability monitoring · NetBox · infrastructure observability
+### Monitoramento e segurança
+Zabbix · Grafana · SNMP/LLD · Wazuh · monitoramento de vulnerabilidades · NetBox · observabilidade
 
-### Infrastructure Services
-Active Directory · DNS · WSUS · NTP/Syslog · Aptly/Nginx repositories · PowerShell · Linux administration
+### Serviços de infraestrutura
+Active Directory · DNS · WSUS · NTP/Syslog · repositórios Aptly/Nginx · PowerShell · administração Linux
 
-## How I document delivery
+## Como documento minhas entregas
 
-Each case separates:
+Em cada case, diferencio o contexto, as atividades que executei, os testes realizados, as decisões de implementação, os resultados validados e as pendências. **Não confundo implantação técnica com aceite formal de cliente.** Identifico os laboratórios como tais e não apresento um monitoramento inicial como SOC 24×7.
 
-- environment or requirement;
-- what I personally worked on;
-- tests and evidence;
-- implementation decisions;
-- validated result;
-- open risks and remaining milestones.
+## Materiais profissionais
 
-Ongoing projects do not claim final acceptance before it happens. Laboratory work is labeled as laboratory work. Security-monitoring implementation is not described as a 24×7 SOC unless that capability is actually validated.
+- [Experiência técnica para currículo e entrevistas](career/EXPERIENCIA-PROJETOS-2026.md)
+- [Estratégia de serviços para a Auron Tech](career/ESTRATEGIA-AURON-SERVICOS.md)
+- [Repositório do template Zabbix — Dell N1124P-ON](https://github.com/SamuelGuigo/zabbix-dell-n1124p-on)
+- [Relatório técnico de diagnóstico de memória HPE](cases/hpe-proliant-post-memory-troubleshooting/docs/RELATORIO_TECNICO.md)
 
-## Additional project and evidence
+## Política de publicação
 
-- [Dell N1124P-ON Zabbix template repository](https://github.com/SamuelGuigo/zabbix-dell-n1124p-on)
-- [Detailed HPE memory diagnostic report — Portuguese](cases/hpe-proliant-post-memory-troubleshooting/docs/RELATORIO_TECNICO.md)
-
-## Publication policy
-
-Professional cases are sanitized to preserve their technical value without exposing customer systems. Customer names, internal addresses, credentials, hostnames and sensitive topology are excluded.
-
-See [SECURITY.md](SECURITY.md) for the publication and evidence-handling policy.
+Publico cases técnicos anonimizados, preservando informações confidenciais de clientes e empregadores. Não exponho credenciais, IPs internos, hostnames, topologias sensíveis ou evidências privadas. Consulte [SECURITY.md](SECURITY.md).

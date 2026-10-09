@@ -6,7 +6,7 @@ Neste portfólio apresento projetos em que atuei, investigações de incidentes,
 
 ## Encerramento técnico — outubro de 2026
 
-- **[Handover técnico de infraestrutura corporativa](cases/enterprise-infrastructure-handover-2026/README.md):** atuei desde a implantação inicial do VMware ESXi/vCenter, criação e configuração das VMs e serviços Windows/Linux até a posterior migração para Proxmox, com atividades de segurança e monitoramento Wazuh/Zabbix. O aceite formal do cliente e outras verificações operacionais são etapas independentes.
+- **[Handover técnico de infraestrutura corporativa](cases/enterprise-infrastructure-handover-2026/README.md):** atuei em uma multinacional líder global do setor alimentício, desde a implantação inicial do VMware ESXi/vCenter, criação e configuração das VMs e serviços Windows/Linux até a posterior migração para Proxmox, com atividades de segurança e monitoramento Wazuh/Zabbix. O aceite formal do cliente e outras verificações operacionais são etapas independentes.
 
 ## Trabalhos técnicos selecionados
 

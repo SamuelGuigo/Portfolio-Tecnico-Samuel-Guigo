@@ -8,7 +8,7 @@
 
 ## Resumo
 
-Atuei na implementação de uma infraestrutura corporativa de servidores e serviços, inicialmente sobre **VMware ESXi integrado ao vCenter**. Preparei o hypervisor, criei e configurei máquinas virtuais Windows Server e Ubuntu, apoiei a implantação de serviços de infraestrutura e trabalhei nas dependências de rede, armazenamento, segurança e backup. Posteriormente, uma mudança de plataforma exigiu **migrar as cargas de trabalho para Proxmox VE**, adaptar os guests e verificar novamente seus serviços.
+Atuei na implementação de uma infraestrutura corporativa de servidores e serviços para uma **multinacional líder global do setor alimentício**, com operações industriais de grande porte. O ambiente foi construído inicialmente sobre **VMware ESXi integrado ao vCenter**. Preparei o hypervisor, criei e configurei máquinas virtuais Windows Server e Ubuntu, apoiei a implantação de serviços de infraestrutura e trabalhei nas dependências de rede, armazenamento, segurança e backup. Posteriormente, uma mudança de plataforma exigiu **migrar as cargas de trabalho para Proxmox VE**, adaptar os guests e verificar novamente seus serviços.
 
 O principal aprendizado demonstrado é a capacidade de executar **duas etapas substanciais de plataforma**: primeiro construir o ambiente virtual VMware e depois conduzir a transição para Proxmox — não apenas transportar VMs preexistentes.
 

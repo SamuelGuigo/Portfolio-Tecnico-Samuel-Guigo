@@ -10,7 +10,7 @@
 
 I am participating directly in the migration of a virtual infrastructure from VMware ESXi to Proxmox VE.
 
-The work covers host preparation, cluster configuration, workload migration, adaptation of Windows guests to KVM/QEMU, storage integration and post-migration validation. The project is being executed in stages so that each workload can be validated before the next one is moved.
+Before the migration, I had already worked on the **initial VMware ESXi deployment, vCenter integration, VM provisioning and Windows/Linux service setup** for this infrastructure. A later platform change required migrating those workloads to Proxmox VE, including host and cluster preparation, guest adaptation to KVM/QEMU, and post-migration validation. The full lifecycle is documented in the [enterprise infrastructure case](../enterprise-infrastructure-handover-2026/README.md). The project is being executed in stages so that each workload can be validated before the next one is moved.
 
 ## Scope
 

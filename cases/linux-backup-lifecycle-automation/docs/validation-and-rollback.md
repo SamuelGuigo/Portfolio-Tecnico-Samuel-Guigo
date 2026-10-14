@@ -1,29 +1,31 @@
-# Validação operacional e rollback / Validation & rollback
+# Operational Validation and Rollback
 
-[← Case principal](../README.md)
+[← Back to the case study](../README.md)
 
-## Antes da execução
+## Before a production run
 
-- [ ] Confirmar aprovação da mudança e política de recuperação/retention.
-- [ ] Confirmar montagem, dispositivo, filesystem e espaço mínimo do destino.
-- [ ] Verificar criação e fechamento dos dumps SQL; evitar coincidência com job de backup.
-- [ ] Conferir período mínimo de idade e quantidade de cópias recentes preservadas.
-- [ ] Testar sintaxe, ambiente isolado, limites de ocupação, lock e tratamento de falhas.
-- [ ] Preparar monitoração de I/O/memória e plano de parada.
+- [ ] Confirm a change window, authorization and backup retention policy.
+- [ ] Verify the expected archive mountpoint, filesystem and free space.
+- [ ] Confirm how SQL dump generation completes and avoid overlapping schedules.
+- [ ] Review the rules for file age and how many recent dumps remain locally.
+- [ ] Exercise safety checks in a lab using **synthetic data**.
+- [ ] Identify how to monitor disk I/O, memory, exit status and both filesystems.
+- [ ] Agree on safe-stop and rollback procedures before changing production.
 
-## Após a execução
+## After each run
 
-- [ ] Conferir `systemd` journal, hora de início/fim e status do serviço.
-- [ ] Conferir arquivo no destino e seu tamanho; validar comparação de integridade.
-- [ ] Confirmar ausência da origem somente se o destino estiver íntegro.
-- [ ] Verificar que os backups recentes permaneceram.
-- [ ] Medir uso dos volumes e investigar alertas.
-- [ ] Confirmar próxima ativação do timer.
-- [ ] Planejar teste de restauração em ambiente autorizado.
+- [ ] Review service logs and the process exit status.
+- [ ] Confirm the expected backup is in the archive with its expected size.
+- [ ] Check transfer integrity (a byte-by-byte comparison is appropriate for copying).
+- [ ] Confirm the source was removed only after the destination was validated.
+- [ ] Verify recent source backups were preserved.
+- [ ] Review filesystem usage, alerts, job duration, CPU and memory.
+- [ ] Verify that the next timer activation is scheduled.
+- [ ] Arrange a controlled **database restore test** under the backup acceptance plan.
 
-### Exemplos genéricos de consultas somente leitura
+### Read-only investigation examples
 
-Substitua nomes e diretórios fictícios conforme documentação do ambiente **autorizado**:
+These are fictional paths and service names; apply them only with appropriate authorization.
 
 ```bash
 findmnt --mountpoint /example/archive
@@ -32,16 +34,17 @@ systemctl list-timers --all
 journalctl -u example-backup-migration.service --since 'today 03:30' --no-pager
 ```
 
-## Se houver falha
+## Safe stop and rollback
 
-- Interromper **próximos disparos** desabilitando o timer mediante controle de mudanças. Desabilitar o timer **não encerra** um serviço já em execução.
-- Preservar originais e arquivos temporários até avaliar integridade e possibilidade de recuperação.
-- Não sobrescrever nem excluir arquivos em tentativa de correção improvisada.
-- Conferir logs, montagem, capacidade, processo gerador, permissões e disponibilidade.
-- Restaurar o procedimento anterior somente após aprovação e verificação do efeito da reversão.
+1. Prevent **future scheduled invocations** by disabling the timer under an approved change. Disabling the timer does **not** terminate an ongoing migration process.
+2. Preserve existing backups and incomplete copies while diagnosing the failure.
+3. Do not overwrite destination files or delete originals as a shortcut.
+4. Inspect job logs, permissions, mounts, capacity and backup-producer behavior.
+5. Restore a previously approved procedure only after evaluating its impact.
+6. Escalate if the remaining capacity or storage performance creates production risk.
 
-## Evidências deste case
+## What was actually validated
 
-Foram registrados, em documentação privada, a migração manual de cinco arquivos com comparação aprovada, uma limpeza histórica pontual de 29 backups, a primeira execução agendada com sucesso, validação de presença/ausência do dump e confirmação da próxima janela.
+The private operational record documented the initial manual transfer of five dumps with byte-for-byte verification, a separately authorized cleanup of 29 archived dumps, and a successfully scheduled migration of one SQL dump. The scheduled run was verified through service logs, file size, source absence, archive presence, volume capacity and the next timer trigger.
 
-**Não foram comprovados neste case:** teste de restauração SQL, aceite de retenção automática no histórico e resolução final do alerta Zabbix.
+**Not established:** a successful database restore, automated deletion of long-term archive copies, or independently confirmed clearance of the original monitoring alert.

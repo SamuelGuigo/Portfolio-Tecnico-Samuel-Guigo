@@ -9,7 +9,7 @@ Minha atuação é prática: preparo equipamentos, configuro serviços, investig
 - **[Implantação de infraestrutura e migração VMware → Proxmox](cases/enterprise-infrastructure-handover-2026/README.md):** da criação das VMs e serviços à transição de plataforma, com validação de rede, storage, monitoramento e proteção de endpoints.
 - **[Wazuh](cases/soc-mvp-architecture/README.md):** 14/14 agentes ativos no checkpoint, coleta Sysmon, FIM Windows e alertas por evento controlado.
 - **[SEP/SEPM](cases/symantec-endpoint-protection-rollout/README.md):** implantação remota com 10/10 endpoints Windows Online e atualizados no checkpoint.
-- **[Automação de backups SQL no Linux](cases/linux-backup-lifecycle-automation/README.md):** redução de 89% para 29% na raiz, migração diária validada e limpeza histórica controlada (~233 GB recuperados).
+- **[Linux SQL Backup Lifecycle Automation](cases/linux-backup-lifecycle-automation/README.md):** production case showing system filesystem usage reduced from 89% to 29%, a validated scheduled migration, and ~233 GB recovered through controlled archive cleanup.
 - **[Template Dell/Zabbix](cases/zabbix-dell-n1124p-on/README.md):** adaptação de template comunitário, correções LLD e redução documentada de itens não suportados.
 - **[Recuperação HPE](cases/hpe-proliant-post-memory-troubleshooting/README.md):** isolamento de falha de memória e POST recuperado com 64 GB reconhecidos.
 
@@ -28,7 +28,7 @@ Os recortes de VMware, Proxmox, storage, serviços e segurança aprofundam frent
 | Infraestrutura | [Repositório Linux com Aptly e Nginx](cases/linux-aptly-update-repository/README.md) | Repositório e atualização piloto validados |
 | Segurança | [Wazuh: implantação e validação de recursos](cases/soc-mvp-architecture/README.md) | Plataforma e casos de uso validados em homologação |
 | Segurança | [SEP/SEPM: implantação remota de proteção Windows](cases/symantec-endpoint-protection-rollout/README.md) | Rollout Windows validado; ajustes de fechamento pendentes |
-| Infraestrutura | [Migração automatizada e retenção controlada de backups SQL](cases/linux-backup-lifecycle-automation/README.md) | Migração automática validada; restore e monitoramento complementar pendentes |
+| Infraestrutura | [Linux SQL Backup Lifecycle Automation](cases/linux-backup-lifecycle-automation/README.md) | Scheduled migration validated; restore test and alert follow-up remain pending |
 | Monitoramento | [Template Zabbix 7 para Dell N1124P-ON](cases/zabbix-dell-n1124p-on/README.md) | Adaptado e validado no modelo documentado |
 | Infraestrutura | [Recuperação de servidor HPE com falha no POST](cases/hpe-proliant-post-memory-troubleshooting/README.md) | Inicialização recuperada com 64 GB reconhecidos |
 | Redes | [Comissionamento local de anel Ethernet industrial](cases/industrial-ring-commissioning/README.md) | Switches configurados e anel validado localmente |

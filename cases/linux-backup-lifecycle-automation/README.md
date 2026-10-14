@@ -1,79 +1,70 @@
-# Automação do ciclo de vida de backups SQL em Linux
+# Linux SQL Backup Lifecycle Automation — Production Case Study
 
-[← Portfólio técnico](../../README.md) · [English version](README.en.md)
+[← Technical portfolio](../../README.md)
 
-**Autor:** Samuel Guigo  
-**Tipo:** Troubleshooting, storage e automação operacional  
-**Estado:** Primeira migração automática homologada; validações complementares pendentes  
-**Origem:** Atuação profissional em equipe, em contratação distinta da Auron Tech.
+**Author:** Samuel Guigo  
+**Scope:** Linux troubleshooting, storage, backups and automation  
+**Status:** First scheduled transfer successfully validated; follow-up checks remain  
+**Attribution:** Professional work within a team, separate from Auron Tech commercial projects.
 
-## Contexto e problema
+## Problem
 
-Atendi um alerta de armazenamento em um servidor Linux utilizado por serviços de monitoramento. Dumps SQL periódicos do Zabbix estavam acumulados no filesystem do sistema operacional. A transferência dos backups antigos para um volume de histórico era manual, permitindo que a partição raiz voltasse a se aproximar do limite.
+A production Linux monitoring server experienced high system filesystem usage. Scheduled Zabbix SQL dumps accumulated locally because historical copies were moved to a separate archive volume manually. The recurring growth posed a capacity and continuity risk.
 
-O objetivo foi recuperar capacidade, preservar a integridade dos backups e tornar a migração dos arquivos antigos repetível, sem alterar a geração dos dumps nem reiniciar o serviço de monitoramento.
+The goal was to recover disk space, preserve the integrity of backups and turn the manual transfer of older dumps into a repeatable, controlled task without modifying dump creation or restarting monitoring services.
 
-## O que executei
+## My work
 
-- Analisei partições, montagens e diretórios com `df`, `lsblk`, `findmnt`, `du` e `find` para identificar a origem do consumo.
-- Transferi manualmente cinco dumps SQL para um volume distinto; comparei origem e destino byte a byte antes de remover os originais individualmente.
-- Refinei a rotina Bash com seleção por idade, preservação dos dois backups mais recentes na origem, checagem de montagem/capacidade, proteção de execução concorrente e validação de cópia.
-- Configurei um serviço `systemd` do tipo oneshot e timer diário em horário de menor atividade.
-- Executei **limpeza histórica pontual e manual**, com corte autorizado e confirmação individual de 29 arquivos antigos no volume de histórico. Essa exclusão **não faz parte da rotina automática**.
-- Validei a primeira execução agendada pelo journal do systemd e conferi a ausência do arquivo de origem, sua presença no destino, o tamanho esperado, a ocupação dos volumes e o próximo timer.
+- Investigated filesystem usage and mountpoints using `df`, `du`, `lsblk`, `findmnt` and `find`.
+- Transferred five older SQL backups and compared source and destination byte for byte before removing originals interactively.
+- Refined Bash migration controls for backup age, retention of the two latest files, destination capacity/mount validation, concurrency protection and integrity checking.
+- Configured a daily `systemd` oneshot service and timer.
+- Separately performed a specifically authorized **manual archive cleanup** of 29 old SQL dumps under a one-time cutoff. The automatic routine does **not** purge historical archives.
+- Validated the first scheduled run using service logs, source absence, destination presence, exact file size, filesystem capacity and the next trigger time.
 
-## Resultados comprovados
+## Evidence-based outcomes
 
-| Indicador | Evidência |
+| Measurement | Documented result |
 |---|---|
-| Partição do sistema | De **89%** para **29%** após a migração inicial |
-| Migração inicial | **5 backups** com comparação byte a byte aprovada |
-| Limpeza de arquivo histórico | **29 backups** antigos excluídos em atividade separada |
-| Capacidade liberada no arquivo histórico | Aproximadamente **233 GB**, segundo medição do filesystem |
-| Ocupação do volume histórico | De **76%** para **35%** após a limpeza; **36%** após a primeira execução automática |
-| Primeira execução automatizada | **1 dump** transferido e validado; serviço encerrado com sucesso |
-| Continuidade da rotina | Próximo disparo diário confirmado no `systemd` |
+| System filesystem occupancy | Reduced from **89%** to **29%** |
+| Initial controlled migration | **5 dumps** transferred and byte-compared |
+| Separate archive cleanup | **29 files** removed manually |
+| Archive capacity recovered | Approximately **233 GB** according to filesystem measurements |
+| Archive usage | **76% → 35%** after cleanup, then **36%** after the scheduled migration |
+| First scheduled run | **1 dump** moved and validated; service completed successfully |
+| Ongoing schedule | Following daily timer activation confirmed |
 
-O teste de integridade realizado comprova **igualdade byte a byte na transferência**. Não comprova consistência lógica do banco nem sucesso em uma eventual restauração SQL.
+A byte-for-byte comparison proves **transfer integrity**, not database consistency or restore readiness.
 
-## Desenho operacional
+## Operational design
 
-1. Conferir montagem, capacidade e espaço reservado no destino.
-2. Preservar os dois arquivos mais recentes e selecionar somente dumps antigos/elegíveis.
-3. Verificar uso aparente e estabilidade dos arquivos; bloquear em caso de erro ou colisão.
-4. Transferir para nome temporário, comparar conteúdo e publicar o destino definitivo.
-5. Somente após validações, remover a origem; registrar logs e acompanhar capacidade dos dois volumes.
-6. Manter arquivamento histórico e **exclusão histórica** como políticas separadas.
+The workflow separates active local backups from historical archive files. It preserves two recent backups, requires an age threshold, checks archive availability and capacity, uses single-instance locking, stages transfers under temporary names, checks file stability and compares bytes before removing an original. Open-file checks are not fully race-free; behavior of the backup producer must be coordinated.
 
-Verificações pontuais com `fuser` não eliminam completamente condições de corrida. A rotina geradora precisa entregar arquivos finalizados e não reescrever dumps antigos. Consulte a [análise de riscos](docs/architecture-and-risk.md).
+See [architecture and risks](docs/architecture-and-risk.md) and the [validation/rollback checklist](docs/validation-and-rollback.md).
 
-## Tecnologias
+## Open items
 
-Debian Linux · Bash · XFS · Zabbix · systemd Timers · `findmnt` · `fuser` · `cmp` · `flock` · troubleshooting · backup lifecycle · change management.
+- Database restore test was not part of this scope.
+- Memory and I/O consumption deserve additional monitoring.
+- The original monitoring alert has not been independently confirmed as cleared.
+- No automated long-term archive deletion/retention policy was introduced.
 
-## Pendências e limites de aceite
+## Additional technical documentation
 
-- Teste de restauração do banco de dados não executado neste recorte.
-- Pico de memória observado no processo automático merece acompanhamento junto às métricas de I/O.
-- Normalização do alerta original no sistema de monitoramento ainda sem evidência independente.
-- Retenção automática definitiva dos arquivos **já arquivados** não foi implantada.
+- [Architecture and risk review](docs/architecture-and-risk.md)
+- [Operational validation and rollback](docs/validation-and-rollback.md)
 
-## Conteúdo público
+## Educational example
 
-- [English case study](README.en.md)
-- [Arquitetura e riscos](docs/architecture-and-risk.md)
-- [Validação e rollback](docs/validation-and-rollback.md)
-- [Exemplo ilustrativo de seleção de backups](examples/retention-preview.sh)
-- [Teste com arquivos sintéticos](examples/test-preview.sh)
-
-Para executar o **teste do exemplo**, sem movimentar nem excluir backups:
+- [Read-only eligibility preview](examples/retention-preview.sh)
+- [Synthetic test](examples/test-preview.sh)
 
 ```bash
 bash examples/test-preview.sh
 ```
 
-O exemplo é **somente leitura** e foi escrito independentemente para demonstrar regras de elegibilidade. **Não é o script utilizado em produção, não migra nem exclui arquivos e não deve ser tratado como automação pronta para implantar.**
+This example was independently authored; it never copies, moves or deletes backup files. **It is not the proprietary script deployed in production.**
 
-## Confidencialidade e atribuição
+## Confidentiality
 
-Case técnico anonimizado de atividade profissional em equipe, **não uma entrega comercial da Auron Tech**. Foram omitidos cliente, localidade, hostnames, IPs, caminhos internos, prints, logs privados, parâmetros específicos e código operacional da empresa. Consulte a [política de publicação](../../SECURITY.md).
+Customer and employer-identifying data, internal addresses, hostnames, mount paths, screenshots, logs and operational source code are excluded. This is professional team experience, **not an Auron Tech delivery**. See [publication policy](../../SECURITY.md).

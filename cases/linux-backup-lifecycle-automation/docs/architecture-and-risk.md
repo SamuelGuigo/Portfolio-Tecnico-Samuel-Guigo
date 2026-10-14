@@ -1,52 +1,55 @@
-# Arquitetura e avaliação de riscos / Architecture and risk review
+# Architecture and Risk Review
 
-[← Case principal](../README.md)
+[← Back to the case study](../README.md)
 
-## Arquitetura conceitual (genérica)
+## Conceptual workflow
 
 ```text
-Gerador de dump SQL
-      |
-      v
-Filesystem local (backups recentes)
-      |
-      v
-systemd timer -> oneshot migration
-      |  checagens de idade, montagem e capacidade
-      |  bloqueio de concorrência; uso aparente do arquivo
-      |  cópia temporária; comparação byte a byte
-      |  publicação do destino; remoção final da origem
-      v
-Volume de arquivo histórico (backups antigos)
+SQL dump producer
+        |
+        v
+Local filesystem (recent backups)
+        |
+        v
+systemd timer -> one-shot migration
+        | validate mountpoint and available space
+        | preserve newest files and enforce a minimum age
+        | prevent concurrent executions; inspect file use
+        | stage a temporary copy; verify bytes
+        | publish the archive file; remove the source
+        v
+Separate historical archive volume
 ```
 
-O fluxo acima descreve controles gerais documentados na atividade. **Não** reproduz a configuração nem o código do ambiente profissional.
+This diagram summarizes general principles of the work. It does **not** disclose the employer's production source code, filesystem paths, configuration, logs or infrastructure identifiers.
 
-## Matriz de riscos
+## Risk assessment
 
-| Risco | Controles esperados | Limitações |
+| Risk | General safeguards | Important limitation |
 |---|---|---|
-| Volume errado/desmontado | Conferir `findmnt`, tipo e espaço | Montagens podem mudar entre verificações |
-| Dump incompleto | Janela mínima de idade, retenção de recentes e metadados estáveis | Produtor pode reabrir dumps antigos |
-| Arquivo em uso | Verificações com `fuser` e bloqueio em caso de erro | Checagem pontual não elimina corridas |
-| Execuções concorrentes | Lock de instância | Outros processos exigem coordenação separada |
-| Cópia parcial/corrupta | Arquivo temporário e comparação `cmp` | Não substitui verificação de restore |
-| Nome já existente | Bloquear sobrescrita e registrar incidente | Requer tratamento operacional |
-| Volume destino cheio | Reserva mínima e limiar de ocupação | Necessária política de crescimento/retenção |
-| I/O e memória | Horário adequado, prioridade conservadora e monitoramento | Não garante ausência de impacto em produção |
-| Perda de dados | Remover origem somente após confirmar arquivo completo no destino | Exige recuperação e backups independentes quando aplicável |
+| Archive not mounted or wrong device | Validate mountpoint, filesystem and available capacity | Mounted volumes can change after checks |
+| Incomplete backup | Minimum age, recent-file retention and stability checks | The dump generator may rewrite an older file |
+| File open by a process | Check with `fuser` and fail on detectable errors | Point-in-time checks are not race-free |
+| Concurrent migration | Exclusive lock such as `flock` | Independent tools may ignore the lock |
+| Truncated or corrupt transfer | Temporary destination file and byte-for-byte check using `cmp` | Does not prove a SQL database can be restored |
+| Existing destination name | Never overwrite without investigation | Manual conflict resolution may be necessary |
+| Storage growth | Destination usage limit, reserved free capacity and monitoring | Historical retention must be addressed separately |
+| Disk I/O or memory contention | Off-peak scheduling, low-priority I/O and telemetry | Performance impact cannot be excluded |
+| Data loss from deletion | Remove the source only after a verified transfer | Recovery still depends on an adequate backup strategy |
 
-## Pré-requisitos de mudança
+## Change-management checklist
 
-1. Confirmar proprietário dos dados, retenção aprovada, escopo e autorização.
-2. Validar o horário e a forma como os dumps são gerados e finalizados.
-3. Medir capacidade e saúde da raiz e do volume separado.
-4. Preparar rollback; evitar ações irreversíveis se não houver recuperação válida.
-5. Testar em arquivos sintéticos e verificar log e critérios de elegibilidade.
-6. Executar primeiro ciclo sob acompanhamento; medir tempo, I/O e memória.
-7. Comparar resultado no filesystem e avaliar um teste de restauração.
-8. Monitorar saturação futura de ambos os volumes.
+1. Confirm authorization, backup ownership, retention requirements and scope.
+2. Determine when each SQL dump is finished and whether its source file may reopen.
+3. Validate filesystem health, mounts and free capacity on both volumes.
+4. Establish monitoring, a safe stop plan and a rollback procedure.
+5. Test eligibility and failure handling with synthetic files before production.
+6. Observe the first scheduled transfer and record completion, resource use and errors.
+7. Confirm the archived file's integrity, original-file state and next timer.
+8. Conduct a separate database restore test when required for backup acceptance.
 
-A limpeza manual de backups históricos é **outra operação**, sujeita a autorização e critérios de retenção. O timer de migração não a executa.
+## Separate historical cleanup
 
-O script publicado em [examples/retention-preview.sh](../examples/retention-preview.sh) é apenas uma prévia de elegibilidade, nunca remove/move arquivos e não implementa esse pipeline completo.
+The documented recovery of **approximately 233 GB** came from a **one-time, authorized, manual deletion** of 29 historical backups. This deletion was not performed by the scheduled migration service. It should not be confused with ongoing retention automation.
+
+The [public Bash example](../examples/retention-preview.sh) is intentionally read-only: it previews file eligibility and cannot migrate or delete files.

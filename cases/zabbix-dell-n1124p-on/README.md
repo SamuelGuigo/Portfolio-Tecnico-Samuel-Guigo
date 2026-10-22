@@ -34,7 +34,7 @@ Template importável e estabilizado para o equipamento validado. O registro do p
 
 - O resultado inclui desativação/remoção de telemetria incompatível; não significa implementação de todos os OIDs.
 - PoE e validação em outros modelos/firmwares permanecem no roadmap.
-- Minha contribuição é a adaptação, troubleshooting e validação. A base é comunitária; URL, autoria, revisão e licença exatas ainda precisam ser recuperadas, conforme o registro de origem no repositório do template.
+- Minha contribuição é a adaptação, troubleshooting e validação. A base comunitária foi identificada como zbx-dell-n-series, historicamente Elkropac e atualmente business-communication; a revisão efetivamente utilizada e a licença permanecem pendentes, conforme o registro de origem no repositório do template.
 
 ## Tecnologias
 

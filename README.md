@@ -2,9 +2,11 @@
 
 Sou profissional de infraestrutura de TI. Atuo na implantação e sustentação de servidores Windows/Linux, virtualização, redes, armazenamento, monitoramento e segurança em ambientes corporativos e industriais.
 
-Minha atuação é prática: preparo equipamentos, configuro serviços, investigo falhas, executo migrações e documento os resultados. Este portfólio reúne experiência profissional em equipe, projetos publicados e laboratórios identificados.
+Minha atuação reúne condução de projetos e execução técnica: defino soluções e materiais, organizo etapas de mudança, configuro serviços, investigo falhas, executo migrações e documento as validações. Minha trajetória passa por TI hospitalar, suporte e operação de telecom, consultoria própria e infraestrutura corporativa e industrial. Este portfólio reúne experiência profissional em equipe, projetos publicados e laboratórios identificados.
 
 ## Projetos em destaque
+
+- **[Condução técnica e reorganização de racks](cases/data-center-rack-infrastructure-planning/README.md):** autoria do layout executivo, definição de solução e materiais, rastreabilidade e execução por etapas; projeto em andamento, com as-built e aceite final pendentes.
 
 - **[Implantação de infraestrutura e migração VMware → Proxmox](cases/enterprise-infrastructure-handover-2026/README.md):** da criação das VMs e serviços à transição de plataforma, com validação de rede, storage, monitoramento e proteção de endpoints.
 - **[Wazuh](cases/soc-mvp-architecture/README.md):** 14/14 agentes ativos no checkpoint, coleta Sysmon, FIM Windows e alertas por evento controlado.
@@ -22,7 +24,7 @@ Os recortes de VMware, Proxmox, storage, serviços e segurança aprofundam frent
 | Virtualização | [Implantação de infraestrutura: VMware, serviços e migração para Proxmox](cases/enterprise-infrastructure-handover-2026/README.md) | Frente técnica concluída; aceite integrado pendente |
 | Virtualização | [Migração VMware → Proxmox VE](cases/proxmox-virtualization-migration/README.md) | Migração concluída e validada na frente técnica |
 | Infraestrutura | [Storage TrueNAS com ZFS RAIDZ2](cases/truenas-zfs-storage/README.md) | Implantado e validado para uso inicial |
-| Virtualização | [Implantação inicial de infraestrutura VMware](cases/vmware-virtual-infrastructure/README.md) | Etapa inicial executada; plataforma posteriormente migrada |
+| Virtualização | [Infraestrutura VMware e preparação de serviços](cases/vmware-virtual-infrastructure/README.md) | Etapa inicial executada; plataforma posteriormente migrada |
 | Infraestrutura | [Active Directory e DNS redundante](cases/windows-server-ad-dns/README.md) | Serviços e replicação validados em homologação |
 | Infraestrutura | [WSUS: distribuição de atualizações Windows](cases/windows-wsus-patch-management/README.md) | Comunicação e inventário piloto validados |
 | Infraestrutura | [Repositório Linux com Aptly e Nginx](cases/linux-aptly-update-repository/README.md) | Repositório e atualização piloto validados |
@@ -35,7 +37,7 @@ Os recortes de VMware, Proxmox, storage, serviços e segurança aprofundam frent
 | Redes | [Diagnóstico CRC/FCS e recuperação de enlace industrial](cases/industrial-ethernet-crc-troubleshooting/README.md) | Comunicação recuperada; reparo permanente a verificar |
 | Redes | [Investigação de indisponibilidade e MAC flapping](cases/layer2-mac-flapping-troubleshooting/README.md) | Diagnóstico de camada 2 e recomendação entregues |
 | Monitoramento | [Monitoramento de infraestrutura com Zabbix e Grafana](cases/zabbix-grafana-infrastructure-monitoring/README.md) | Coleta e diagnóstico documentados |
-| Infraestrutura | [Mapeamento e planejamento de reorganização de racks](cases/data-center-rack-infrastructure-planning/README.md) | Levantamento e plano entregues; execução final pendente |
+| Infraestrutura | [Condução técnica e reorganização de racks](cases/data-center-rack-infrastructure-planning/README.md) | Condução e execução por etapas; fechamento final pendente |
 | Redes | [Portas de contingência e monitoramento industrial](cases/industrial-network-contingency-monitoring/README.md) | Portas reserva e runbook preparados |
 | Redes | [Diagnóstico de enlaces ópticos](cases/fiber-optical-link-troubleshooting/README.md) | Método de diagnóstico documentado |
 | Laboratórios | [Laboratório RouterOS: VLANs, VPN e failover](cases/mikrotik-corporate-network-lab/README.md) | Cenários práticos documentados |

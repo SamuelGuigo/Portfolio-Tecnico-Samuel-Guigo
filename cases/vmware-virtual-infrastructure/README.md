@@ -1,4 +1,4 @@
-# Implantação inicial de infraestrutura VMware
+# Infraestrutura VMware e preparação de serviços
 
 [← Portfólio técnico](../../README.md)
 
@@ -11,7 +11,7 @@
 
 Construir uma infraestrutura virtual desde a preparação dos servidores até a disponibilização das VMs e seus serviços.
 
-Preparei o VMware ESXi, criei VMs Windows/Linux e configurei recursos e conectividade para serviços corporativos.
+Conduzi a preparação desta frente do projeto: trabalhei no VMware ESXi/vCenter, no dimensionamento de VMs Windows/Linux e na configuração dos recursos, serviços e conectividade. A etapa integra um projeto mais amplo de infraestrutura e sua posterior migração de plataforma.
 
 ## Escopo
 

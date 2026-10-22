@@ -11,7 +11,7 @@
 
 Construir uma infraestrutura de servidores para um ambiente corporativo e industrial e adaptar as cargas a uma mudança de hypervisor durante o projeto.
 
-Implantei a plataforma VMware, provisionei VMs Windows/Linux e depois migrei o ambiente para Proxmox, com serviços, rede, storage, monitoramento e segurança.
+Conduzi frentes técnicas do projeto, do dimensionamento e preparação dos serviços à migração VMware → Proxmox, com atuação em sistemas Windows/Linux, rede, storage, monitoramento e segurança. A execução e as validações sob minha responsabilidade estão detalhadas abaixo; atividades delegadas e aceite integrado mantêm seus marcos próprios.
 
 ## Escopo
 

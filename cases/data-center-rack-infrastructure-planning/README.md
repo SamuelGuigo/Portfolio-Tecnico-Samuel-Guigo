@@ -1,17 +1,17 @@
-# Mapeamento e planejamento de reorganização de racks
+# Condução técnica e reorganização de racks
 
 [← Portfólio técnico](../../README.md)
 
 **Autor:** Samuel Guigo  
 **Tipo:** Projeto profissional  
-**Estado documentado:** Levantamento e plano entregues; execução final pendente  
+**Estado documentado:** Projeto em andamento; condução técnica e intervenções parciais documentadas  
 **Origem:** Experiência profissional em equipe; contratação distinta da Auron Tech.
 
 ## Contexto e problema
 
 Reorganizar racks e cabeamento com rastreabilidade das conexões e acesso adequado para manutenção.
 
-Mapeei ativos e conexões, especifiquei materiais e organizei as etapas de mudança dos racks.
+Assumi a condução técnica do projeto, elaborei o layout executivo e defini a solução de organização dos racks, os materiais e a sequência de execução. A equipe apoia as intervenções em campo.
 
 ## Escopo
 
@@ -19,6 +19,8 @@ Inventário, rastreamento físico, layout, caminhos de cabos, especificação de
 
 ## Atividades que executei
 
+- Conduzo as decisões técnicas do projeto e sou autor do layout executivo dos racks.
+- Defini a solução física, os materiais necessários e a preparação das etapas de execução.
 - Identifiquei equipamentos e rastreei conexões em campo.
 - Registrei relações entre portas, patch panels e interligações.
 - Planejei layout, organizadores, eletrocalhas, fibra e materiais.
@@ -27,11 +29,12 @@ Inventário, rastreamento físico, layout, caminhos de cabos, especificação de
 
 ## Resultado documentado
 
-Inventário e plano refinados. O registro existente do site documenta 46 ativos, 23 novos IDs, três interligações rastreadas e aproximadamente 90% das portas de três switches identificadas no estágio do levantamento.
+Layout executivo, inventário e plano refinados sob minha condução. Há intervenções parciais de organização e cabeamento registradas; não representam conclusão integral. O recorte histórico do levantamento documenta 46 ativos, 23 novos IDs, três interligações rastreadas e aproximadamente 90% das portas de três switches identificadas no estágio do levantamento.
 
 ## Estado da entrega
 
-- Esses números são do levantamento documentado, não do aceite final.
+- Esses números pertencem ao levantamento histórico, não ao avanço percentual atual ou ao aceite final.
+- A autoria do layout executivo e das decisões técnicas não deve ser confundida com a autoria da proposta comercial anterior.
 - Reorganização física restante, as-built e validação pós-mudança permaneciam pendentes.
 
 ## Tecnologias
